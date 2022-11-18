@@ -3,28 +3,39 @@ package SolvdExercises;
 import java.util.Scanner;
 
 public class Exercise {
-    static Scanner input = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        System.out.println("Please enter the number of the month:");
-        var month = Integer.parseInt(input.nextLine());
-        var station = "Unknown station";
-
-        switch(month){
-            case 1: case 2: case 12:
-                station = "Winter";
-                break;
-            case 3: case 4: case 5:
-                station = "Spring";
-                break;
-            case 6: case 7: case 8:
-                station = "Summer";
-                break;
-            case 9: case 10: case 11:
-                station = "Autumn";
-                break;
-        }
-
-        System.out.println("station = " + station);
+    public static void main(String args[]){
+        Exercise object = new Exercise();
+        int array[] = {64,25,12,22,11};
+        object.sort(array);
+        System.out.println("Sorted array");
+        object.printArray(array);
     }
+    void sort(int array[]){
+        int n = array.length;
+
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++){
+            // Find the minimum element in unsorted array
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (array[j] < array[min_idx])
+                    min_idx = j;
+
+            // Swap the found minimum element with the first
+            // element
+            int temp = array[min_idx];
+            array[min_idx] = array[i];
+            array[i] = temp;
+        }
+    }
+
+    // Prints the array
+    void printArray(int array[]) {
+        int n = array.length;
+        for (int i = 0; i < n; ++i)
+            System.out.print(array[i] + " ");
+        System.out.println();
+    }
+
 }
