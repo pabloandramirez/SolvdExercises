@@ -1,3 +1,5 @@
+package solvd.agency.src;
+
 abstract class Person {
     private String firstName;
     private String lastName;

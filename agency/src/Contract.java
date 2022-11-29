@@ -1,9 +1,14 @@
+package solvd.agency.src;
+
 abstract class Contract {
+    private int idContract;
     private Customer customer;
     private int idApartment;
     private Agent agent;
+    private static int idCounter;
 
     public Contract(Customer customer, int idApartment, Agent agent) {
+        this.idContract = ++Contract.idCounter;
         this.customer = customer;
         this.idApartment = idApartment;
         this.agent = agent;
@@ -31,6 +36,10 @@ abstract class Contract {
 
     public void setAgent(Agent agent) {
         this.agent = agent;
+    }
+
+    public int getIdContract() {
+        return idContract;
     }
 
     @Override

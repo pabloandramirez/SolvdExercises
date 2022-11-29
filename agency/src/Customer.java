@@ -1,3 +1,5 @@
+package solvd.agency.src;
+
 public class Customer {
     private int idClient;
     private String firstName;

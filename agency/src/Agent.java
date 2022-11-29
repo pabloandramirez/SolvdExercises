@@ -1,3 +1,5 @@
+package solvd.agency.src;
+
 public class Agent extends Person{
     private int idAgent;
     private float saleCommission;

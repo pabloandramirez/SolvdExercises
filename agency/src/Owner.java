@@ -1,3 +1,5 @@
+package solvd.agency.src;
+
 public class Owner extends Person{
     private int idOwner;
     private static int idCounter;

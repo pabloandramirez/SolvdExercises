@@ -1,3 +1,5 @@
+package solvd.agency.src;
+
 public class Apartment {
     private int idApartment;
     private String location;
