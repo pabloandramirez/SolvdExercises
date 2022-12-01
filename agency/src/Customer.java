@@ -8,7 +8,6 @@ public class Customer {
     private String email;
     private long phoneNumber;
     private static int idCounter;
-    private Apartment apartments[] = new Apartment[9];
     private int apartmentCounter;
 
     private Customer(){
@@ -22,47 +21,6 @@ public class Customer {
         this.city = city;
         this.email = email;
         this.phoneNumber = phoneNumber;
-    }
-
-    public void buySearch(int rooms, String location, float price, Agency agency){
-        int o = 1;
-        for (int i = 0; i < agency.getApartments().length ; i++) {
-            if (agency.getApartments()[i].getAvailable()) {
-                if (rooms == agency.getApartments()[i].getNumberRooms()) {
-                    if (location.toLowerCase().equals(agency.getApartments()[i].getLocation())) {
-                        if (price >= agency.getApartments()[i].getPrice()) {
-                            if (agency.getApartments()[i].getRentOrBuy() == RentOrBuy.ForBuy) {
-                                System.out.println("Coincidence for buy " + (o++));
-                                System.out.println(agency.getApartments()[i]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public void rentSearch(int rooms, String location, float price, Agency agency){
-        int o = 1;
-        for (int i = 0; i < agency.getApartments().length ; i++) {
-            if (agency.getApartments()[i].getAvailable()) {
-                if (rooms == agency.getApartments()[i].getNumberRooms()) {
-                    if (location.toLowerCase().equals(agency.getApartments()[i].getLocation())) {
-                        if (price >= agency.getApartments()[i].getPrice()) {
-                            if (agency.getApartments()[i].getRentOrBuy() == RentOrBuy.ForRent) {
-                                System.out.println("Coincidence for rent " + (o++));
-                                System.out.println(agency.getApartments()[i]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-    public void buyApartment(Apartment apartment){
-        this.apartments[this.apartmentCounter++] = apartment;
     }
 
     public int getIdClient() {

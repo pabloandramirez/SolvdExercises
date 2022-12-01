@@ -1,5 +1,7 @@
 package solvd.agency.src;
 
+import java.util.Objects;
+
 abstract class Person {
     private String firstName;
     private String lastName;
@@ -42,5 +44,18 @@ abstract class Person {
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return phoneNumber == person.phoneNumber && firstName.equals(person.firstName) && lastName.equals(person.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, phoneNumber);
     }
 }

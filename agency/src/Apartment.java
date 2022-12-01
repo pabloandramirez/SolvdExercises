@@ -6,7 +6,7 @@ public class Apartment {
     private float price;
     private int numberRooms;
     private static int idCounter;
-    private Boolean available;
+    private boolean available;
     private Owner owner;
     private RentOrBuy rentOrBuy;
 
@@ -53,11 +53,11 @@ public class Apartment {
         this.numberRooms = numberRooms;
     }
 
-    public Boolean getAvailable() {
+    public boolean getAvailable() {
         return available;
     }
 
-    public void setAvailable(Boolean available) {
+    public void setAvailable(boolean available) {
         this.available = available;
     }
 

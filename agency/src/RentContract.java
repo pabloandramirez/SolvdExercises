@@ -23,4 +23,6 @@ public class RentContract extends Contract{
                 ", contract=" + super.toString() +
                 '}';
     }
+
+
 }

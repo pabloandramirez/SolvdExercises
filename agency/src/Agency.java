@@ -1,10 +1,12 @@
 package solvd.agency.src;
 
-public class Agency {
+public class Agency implements IBuySearch, IRentSearch{
     private String name;
     private String address;
     private long phoneNumber;
-    private Apartment apartments[] = new Apartment[9];
+    private Apartment apartments[] = new  Apartment[9];
+    private Person customers[];
+    private Person agents[];
     private int apartmentsCounter;
 
     public Agency(String name, String address, long phoneNumber) {
@@ -13,8 +15,22 @@ public class Agency {
         this.phoneNumber = phoneNumber;
     }
 
-    public void addApartment(Apartment apartment){
-        this.apartments[this.apartmentsCounter++] = apartment;
+    public void addApartment(Apartment... apartments){
+        for (int i = 0; i < apartments.length; i++) {
+            this.apartments[i] = apartments[i];
+        }
+    }
+
+    public void addCustomer(Person... customers){
+        for (int i = 0; i < customers.length; i++) {
+            this.customers[i] = customers[i];
+        }
+    }
+
+    public void addAgent(Person... agents){
+        for (int i = 0; i < agents.length; i++) {
+            this.agents[i] = agents[i];
+        }
     }
 
     public Apartment[] getApartments() {
@@ -61,39 +77,47 @@ public class Agency {
     }
 
     public static void main(String[] args) {
-        Owner owner1 = new Owner("Pablo", "Ramirez", 1234567);
-        Owner owner2 = new Owner("Juan", "Gonzalez", 2345678);
-        Owner owner3 = new Owner("Pedro", "Gomez", 3456789);
-        Apartment apartmentMinimalistic = new Apartment(owner1, "Resistencia", 5000, 5, true, RentOrBuy.ForBuy);
-        Apartment apartmentEcologic = new Apartment(owner1, "Mendoza", 4000, 3, true, RentOrBuy.ForRent);
+        Owner owner1 = new Owner("John", "Doe", 1234567);
+        Owner owner2 = new Owner("Meryl", "Streep", 2345678);
+        Owner owner3 = new Owner("Jason", "Momoa", 3456789);
+        Customer customerPaul = new Customer("Paul", "Newman", "Chicago", "pablo@mail.com", 123456);
+        Customer customerMartin = new Customer("Martin", "Scorsese", "Missouri", "pablo@mail.com", 123456);
+        Customer customerJonas = new Customer("Jonas", "Johnson", "Los Angeles", "pablo@mail.com", 123456);
+        Apartment apartmentMinimalistic = new Apartment(owner1, "Los Angeles", 5000, 5, true, RentOrBuy.ForBuy);
+        Apartment apartmentEcologic = new Apartment(owner1, "New York", 4000, 3, true, RentOrBuy.ForRent);
         Apartment apartmentFuturistic = new Apartment(owner1, "Chicago", 3500, 3, true, RentOrBuy.ForRent);
         Apartment apartmentRustic = new Apartment(owner2, "Los Angeles", 1500, 1, true, RentOrBuy.ForBuy);
         Apartment apartmentSimple = new Apartment(owner2, "Chicago", 2000, 3, true, RentOrBuy.ForRent);
         Apartment apartmentFuturistic2 = new Apartment(owner2, "Santa Cruz", 6000, 4, true, RentOrBuy.ForRent);
-        Apartment apartmentSimple2 = new Apartment(owner3, "Roma", 3500, 2, true, RentOrBuy.ForBuy);
-        Apartment apartmentLuxury = new Apartment(owner3, "Lima", 5500, 4, true, RentOrBuy.ForRent);
+        Apartment apartmentSimple2 = new Apartment(owner3, "New Jersey", 3500, 2, true, RentOrBuy.ForBuy);
+        Apartment apartmentLuxury = new Apartment(owner3, "Washington", 5500, 4, true, RentOrBuy.ForRent);
         Apartment apartmentSpecial = new Apartment(owner3, "Chicago", 7000, 3, true, RentOrBuy.ForBuy);
 
         Agency agency1 = new Agency("Real Estate Agency", "Evergreen 123", 12345678);
-        agency1.addApartment(apartmentMinimalistic);
-        agency1.addApartment(apartmentEcologic);
-        agency1.addApartment(apartmentFuturistic);
-        agency1.addApartment(apartmentRustic);
-        agency1.addApartment(apartmentSimple);
-        agency1.addApartment(apartmentFuturistic2);
-        agency1.addApartment(apartmentSimple2);
-        agency1.addApartment(apartmentLuxury);
-        agency1.addApartment(apartmentSpecial);
-        agency1.showApartments();
+        agency1.addApartment(apartmentMinimalistic, apartmentEcologic, apartmentFuturistic,
+                apartmentRustic, apartmentSimple, apartmentFuturistic2, apartmentSimple2,
+                apartmentLuxury, apartmentSpecial);
 
-        Customer customerPablo = new Customer("Pablo", "Ramirez", "Resistencia", "pablo@mail.com", 123456);
-        customerPablo.buySearch(3, "Chicago", 8000, agency1);
-        customerPablo.rentSearch(3, "Chicago", 8000, agency1);
+
+        agency1.rentSearch(3, "Chicago", 8000, agency1.getApartments());
+        agency1.buySearch(3, "Chicago", 8000, agency1.getApartments());
 
         Agent agent1 = new Agent("Santiago", "Del Moro", 123456, agency1, 20,10);
 
-        RentContract contract1 = new RentContract(customerPablo, 3, agent1);
-        System.out.println("Commission for rents contracts: " + agent1.getRentCommission());
-        System.out.println("Commission por sales contracts: " + agent1.getSaleCommission());
+        if (owner1 == owner2){
+            System.out.println("Same memory space reference");
+        } else {
+            System.out.println("Not same memory space reference");
+        }
+        if (owner1.equals(owner2)){
+            System.out.println("Objects with same content");
+        } else {
+            System.out.println("Objects with different content");
+        }
+        if (owner1.hashCode() == owner2.hashCode()){
+            System.out.println("Objects with same hash code");
+        } else {
+            System.out.println("Objects with different hash code");
+        }
     }
 }

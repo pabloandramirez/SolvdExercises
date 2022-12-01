@@ -1,5 +1,7 @@
 package solvd.agency.src;
 
+import java.util.Objects;
+
 abstract class Contract {
     private int idContract;
     private Customer customer;
@@ -49,5 +51,18 @@ abstract class Contract {
                 ", idApartment=" + idApartment +
                 ", agent=" + agent +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contract contract = (Contract) o;
+        return idContract == contract.idContract && idApartment == contract.idApartment && customer.equals(contract.customer) && agent.equals(contract.agent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idContract, customer, idApartment, agent);
     }
 }
