@@ -1,12 +1,17 @@
-package solvd.agency.src;
+package solvd.agency.src.business;
 
-public class Agency implements IBuySearch, IRentSearch{
+import solvd.agency.src.persons.Agent;
+import solvd.agency.src.persons.Customer;
+import solvd.agency.src.persons.Owner;
+
+public class Agency implements IBuySearch, IRentSearch {
     private String name;
     private String address;
     private long phoneNumber;
     private Apartment apartments[] = new  Apartment[9];
-    private Person customers[];
-    private Person agents[];
+    private Customer customers[] = new Customer[3];
+    private Agent agents[] = new Agent[3];
+    private Owner owners[] = new Owner[3];
     private int apartmentsCounter;
 
     public Agency(String name, String address, long phoneNumber) {
@@ -21,15 +26,21 @@ public class Agency implements IBuySearch, IRentSearch{
         }
     }
 
-    public void addCustomer(Person... customers){
+    public void addCustomer(Customer... customers){
         for (int i = 0; i < customers.length; i++) {
             this.customers[i] = customers[i];
         }
     }
 
-    public void addAgent(Person... agents){
+    public void addAgent(Agent... agents){
         for (int i = 0; i < agents.length; i++) {
             this.agents[i] = agents[i];
+        }
+    }
+
+    public void addOwner(Owner... owners){
+        for (int i = 0; i < owners.length; i++) {
+            this.owners[i] = owners[i];
         }
     }
 
@@ -80,9 +91,15 @@ public class Agency implements IBuySearch, IRentSearch{
         Owner owner1 = new Owner("John", "Doe", 1234567);
         Owner owner2 = new Owner("Meryl", "Streep", 2345678);
         Owner owner3 = new Owner("Jason", "Momoa", 3456789);
-        Customer customerPaul = new Customer("Paul", "Newman", "Chicago", "pablo@mail.com", 123456);
-        Customer customerMartin = new Customer("Martin", "Scorsese", "Missouri", "pablo@mail.com", 123456);
-        Customer customerJonas = new Customer("Jonas", "Johnson", "Los Angeles", "pablo@mail.com", 123456);
+
+        Customer customerPaul = new Customer("Paul", "Newman", 123456, "Chicago", "pablo@mail.com");
+        Customer customerMartin = new Customer("Martin", "Scorsese", 123456, "Missouri", "pablo@mail.com");
+        Customer customerJonas = new Customer("Jonas", "Johnson", 123456, "Los Angeles", "pablo@mail.com");
+
+        Agent agent1 = new Agent("Drew", "Barrymore", 123456, 20,10);
+        Agent agent2 = new Agent("Kevin", "Hart", 123456, 20,10);
+        Agent agent3 = new Agent("Dwayne", "Johnson", 123456, 20,10);
+
         Apartment apartmentMinimalistic = new Apartment(owner1, "Los Angeles", 5000, 5, true, RentOrBuy.ForBuy);
         Apartment apartmentEcologic = new Apartment(owner1, "New York", 4000, 3, true, RentOrBuy.ForRent);
         Apartment apartmentFuturistic = new Apartment(owner1, "Chicago", 3500, 3, true, RentOrBuy.ForRent);
@@ -97,12 +114,14 @@ public class Agency implements IBuySearch, IRentSearch{
         agency1.addApartment(apartmentMinimalistic, apartmentEcologic, apartmentFuturistic,
                 apartmentRustic, apartmentSimple, apartmentFuturistic2, apartmentSimple2,
                 apartmentLuxury, apartmentSpecial);
+        agency1.addOwner(owner1, owner2, owner3);
+        agency1.addCustomer(customerJonas,customerMartin,customerPaul);
+        agency1.addAgent(agent1,agent2,agent3);
 
 
         agency1.rentSearch(3, "Chicago", 8000, agency1.getApartments());
         agency1.buySearch(3, "Chicago", 8000, agency1.getApartments());
 
-        Agent agent1 = new Agent("Santiago", "Del Moro", 123456, agency1, 20,10);
 
         if (owner1 == owner2){
             System.out.println("Same memory space reference");

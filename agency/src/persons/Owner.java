@@ -1,6 +1,6 @@
-package solvd.agency.src;
+package solvd.agency.src.persons;
 
-public class Owner extends Person{
+public class Owner extends Person {
     private int idOwner;
     private static int idCounter;
     private int apartmentCounter;

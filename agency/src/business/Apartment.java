@@ -1,4 +1,6 @@
-package solvd.agency.src;
+package solvd.agency.src.business;
+
+import solvd.agency.src.persons.Owner;
 
 public class Apartment {
     private int idApartment;

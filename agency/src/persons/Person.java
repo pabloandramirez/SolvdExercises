@@ -1,4 +1,4 @@
-package solvd.agency.src;
+package solvd.agency.src.persons;
 
 import java.util.Objects;
 

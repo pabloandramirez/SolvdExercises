@@ -1,18 +1,22 @@
-package solvd.agency.src;
+package solvd.agency.src.contracts;
+
+import solvd.agency.src.persons.Agent;
+import solvd.agency.src.business.Apartment;
+import solvd.agency.src.persons.Customer;
 
 import java.util.Objects;
 
 abstract class Contract {
     private int idContract;
     private Customer customer;
-    private int idApartment;
+    private Apartment apartment;
     private Agent agent;
     private static int idCounter;
 
-    public Contract(Customer customer, int idApartment, Agent agent) {
+    public Contract(Customer customer, Apartment apartment, Agent agent) {
         this.idContract = ++Contract.idCounter;
         this.customer = customer;
-        this.idApartment = idApartment;
+        this.apartment = apartment;
         this.agent = agent;
     }
 
@@ -24,12 +28,12 @@ abstract class Contract {
         this.customer = customer;
     }
 
-    public int getIdApartment() {
-        return idApartment;
+    public Apartment getApartment() {
+        return apartment;
     }
 
-    public void setIdApartment(int idApartment) {
-        this.idApartment = idApartment;
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
     }
 
     public Agent getAgent() {
@@ -48,7 +52,7 @@ abstract class Contract {
     public String toString() {
         return "Contract{" +
                 "customer=" + customer +
-                ", idApartment=" + idApartment +
+                ", apartment=" + apartment +
                 ", agent=" + agent +
                 '}';
     }
@@ -58,11 +62,11 @@ abstract class Contract {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Contract contract = (Contract) o;
-        return idContract == contract.idContract && idApartment == contract.idApartment && customer.equals(contract.customer) && agent.equals(contract.agent);
+        return idContract == contract.idContract && apartment == contract.apartment && customer.equals(contract.customer) && agent.equals(contract.agent);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idContract, customer, idApartment, agent);
+        return Objects.hash(idContract, customer, apartment, agent);
     }
 }
