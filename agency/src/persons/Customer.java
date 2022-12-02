@@ -5,18 +5,27 @@ public class Customer extends Person {
     private String city;
     private String email;
     private static int idCounter;
-    private int apartmentCounter;
+    private double amount;
 
 
-    public Customer(String firstName, String lastName, long phoneNumber, String city, String email) {
+    public Customer(String firstName, String lastName, long phoneNumber, double amount, String city, String email) {
         super(firstName, lastName, phoneNumber);
         this.idClient = ++Customer.idCounter;
+        this.amount = amount;
         this.city = city;
         this.email = email;
     }
 
     public int getIdClient() {
         return idClient;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public String getEmail() {

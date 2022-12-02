@@ -1,8 +1,8 @@
 package solvd.agency.src.contracts;
 
+import solvd.agency.src.business.Apartment;
 import solvd.agency.src.business.RentOrBuy;
 import solvd.agency.src.persons.Agent;
-import solvd.agency.src.business.Apartment;
 import solvd.agency.src.persons.Customer;
 
 public class BuyContract extends Contract {
