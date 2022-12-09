@@ -1,6 +1,6 @@
 package solvd.agency.src.business;
 
 public enum RentOrBuy {
-    ForRent,
-    ForBuy
+    FOR_RENT,
+    FOR_BUY
 }

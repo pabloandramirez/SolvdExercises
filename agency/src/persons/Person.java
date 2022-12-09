@@ -1,8 +1,5 @@
 package solvd.agency.src.persons;
 
-import solvd.agency.src.business.Apartment;
-import solvd.agency.src.business.RentOrBuy;
-
 import java.util.Objects;
 
 abstract class Person {

@@ -2,8 +2,10 @@ package solvd.agency.src.business;
 
 import solvd.agency.src.persons.Owner;
 
-public class Apartment {
-    private int idApartment;
+import java.util.Objects;
+
+public final class Apartment {
+    private final int idApartment;
     private String location;
     private float price;
     private int numberRooms;
@@ -75,6 +77,7 @@ public class Apartment {
         return rentOrBuy;
     }
 
+
     @Override
     public String toString() {
         return "Apartment{" +
@@ -87,5 +90,18 @@ public class Apartment {
                 ", owner=" + owner.getFirstName() + " " + owner.getLastName() +
                 ", owner contact=" + owner.getPhoneNumber() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Apartment apartment = (Apartment) o;
+        return idApartment == apartment.idApartment && Float.compare(apartment.price, price) == 0 && numberRooms == apartment.numberRooms && available == apartment.available && location.equals(apartment.location) && owner.equals(apartment.owner) && rentOrBuy == apartment.rentOrBuy;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idApartment, location, price, numberRooms, available, owner, rentOrBuy);
     }
 }

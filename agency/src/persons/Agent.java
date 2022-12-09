@@ -1,9 +1,9 @@
 package solvd.agency.src.persons;
 
-import solvd.agency.src.persons.Person;
+import java.util.Objects;
 
-public class Agent extends Person {
-    private int idAgent;
+public final class Agent extends Person {
+    private final int idAgent;
     private float saleCommission;
     private float rentCommission;
     private static int idCounter;
@@ -58,11 +58,26 @@ public class Agent extends Person {
     public String toString() {
         return "Agent{" +
                 "idAgent=" + idAgent +
-                ", saleCommission=" + saleCommission +
-                ", rentCommission=" + rentCommission +
                 ", percentageSaleCommission=" + percentageSaleCommission +
                 ", percentageRentCommission=" + percentageRentCommission +
+                ", saleCommission=" + saleCommission +
+                ", rentCommission=" + rentCommission +
                 ", person=" + super.toString() +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Agent agent = (Agent) o;
+        return idAgent == agent.idAgent && Float.compare(agent.saleCommission, saleCommission) == 0 && Float.compare(agent.rentCommission, rentCommission) == 0 && Float.compare(agent.percentageSaleCommission, percentageSaleCommission) == 0 && Float.compare(agent.percentageRentCommission, percentageRentCommission) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), idAgent, saleCommission, rentCommission, percentageSaleCommission, percentageRentCommission);
+    }
+
 }
