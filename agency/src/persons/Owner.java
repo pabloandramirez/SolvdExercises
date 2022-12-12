@@ -1,13 +1,11 @@
 package solvd.agency.src.persons;
 
-import solvd.agency.src.business.Apartment;
 
 import java.util.Objects;
 
 public final class Owner extends Person {
-    private int idOwner;
+    private final int idOwner;
     private static int idCounter;
-    private int apartmentCounter;
 
     public Owner(String firstName, String lastName, long phoneNumber){
         super(firstName, lastName, phoneNumber);
@@ -32,11 +30,11 @@ public final class Owner extends Person {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Owner owner = (Owner) o;
-        return idOwner == owner.idOwner && apartmentCounter == owner.apartmentCounter;
+        return idOwner == owner.idOwner;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), idOwner, apartmentCounter);
+        return Objects.hash(super.hashCode(), idOwner);
     }
 }

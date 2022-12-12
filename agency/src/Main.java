@@ -3,13 +3,9 @@ package solvd.agency.src;
 import solvd.agency.src.business.Agency;
 import solvd.agency.src.business.Apartment;
 import solvd.agency.src.business.RentOrBuy;
-import solvd.agency.src.contracts.BuyContract;
-import solvd.agency.src.contracts.RentContract;
 import solvd.agency.src.persons.Agent;
 import solvd.agency.src.persons.Customer;
 import solvd.agency.src.persons.Owner;
-
-import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
@@ -37,31 +33,30 @@ public class Main {
 
         Agency agency1 = new Agency("Real Estate Agency", "Evergreen 123", 12345678);
         agency1.addApartment(apartmentMinimalistic, apartmentEcologic, apartmentFuturistic,
-                apartmentRustic, apartmentSimple, apartmentFuturistic2, apartmentSimple2,
+                apartmentRustic, apartmentSimple);
+        agency1.addApartment( apartmentFuturistic2, apartmentSimple2,
                 apartmentLuxury, apartmentSpecial);
         agency1.addOwner(owner1, owner2, owner3);
         agency1.addCustomer(customerJonas,customerMartin,customerPaul);
         agency1.addAgent(agent1,agent2,agent3);
 
+        try {
+            agency1.rentSearch(-8, "Chicago", customerMartin);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
-        agency1.rentSearch(3, "Chicago", customerMartin);
-        agency1.buySearch(3, "Chicago", customerJonas);
+        try {
+            agency1.buySearch(1, "zxfgfsdgsdfg", customerJonas);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
 
-        BuyContract contract1 = new BuyContract();
-        contract1.iContract(customerJonas, apartmentMinimalistic, agent1, owner1, agency1);
-        contract1.getIdBuyContract();
-        contract1.getDateOfContract();
 
-        BuyContract contract3 = new BuyContract();
-        contract3.iContract(customerPaul, apartmentRustic, agent3, owner3, agency1);
-        contract3.getIdBuyContract();
-        contract3.getDateOfContract();
-
-        RentContract contract2 = new RentContract();
-        contract2.iContract(customerMartin, apartmentFuturistic, agent2, owner2, agency1);
-        contract2.getIdRentContract();
-        contract2.getDateOfContract();
+        agency1.makeBuyContract(customerJonas, 9, agent1);
+        agency1.makeRentContract(customerMartin, 3, agent1);
+        agency1.makeRentContract(customerMartin, 5, agent1);
 
         agency1.showApartments();
 
