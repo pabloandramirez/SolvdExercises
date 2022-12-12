@@ -10,6 +10,7 @@ agency/src/main/resources/
 agency/src/main/main.iml
 
 /maven/agency/.idea/
-/maven/agency/target/
+/maven/agency/agency.iml
+/maven/agency/target
 /maven/agency/src/test/
 
