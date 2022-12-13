@@ -10,7 +10,7 @@ import com.solvd.agency.persons.Owner;
 import org.apache.logging.log4j.Logger;
 
 public class Main {
-    
+
     public static void main(String[] args) {
         Owner owner1 = new Owner("John", "Doe", 1234567);
         Owner owner2 = new Owner("Meryl", "Streep", 2345678);
