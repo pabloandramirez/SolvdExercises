@@ -3,20 +3,22 @@ package com.solvd.agency;
 import com.solvd.agency.business.Agency;
 import com.solvd.agency.business.Apartment;
 import com.solvd.agency.business.RentOrBuy;
-import com.solvd.agency.exceptions.RoomException;
 import com.solvd.agency.persons.Agent;
 import com.solvd.agency.persons.Customer;
 import com.solvd.agency.persons.Owner;
 
+import org.apache.logging.log4j.Logger;
+
 public class Main {
+    
     public static void main(String[] args) {
         Owner owner1 = new Owner("John", "Doe", 1234567);
         Owner owner2 = new Owner("Meryl", "Streep", 2345678);
         Owner owner3 = new Owner("Jason", "Momoa", 3456789);
 
-        Customer customerPaul = new Customer("Paul", "Newman", 123456, 8000.00, "Chicago", "pablo@mail.com");
-        Customer customerMartin = new Customer("Martin", "Scorsese", 123456, 7000.00, "Missouri", "pablo@mail.com");
-        Customer customerJonas = new Customer("Jonas", "Johnson", 123456, 9000.00, "Los Angeles", "pablo@mail.com");
+        Customer customerPaul = new Customer("Paul", "Newman", 123456, 9000, "Chicago", "pablo@mail.com");
+        Customer customerMartin = new Customer("Martin", "Scorsese", 123456, 7000, "Missouri", "pablo@mail.com");
+        Customer customerJonas = new Customer("Jonas", "Johnson", 123456, 9000, "Los Angeles", "pablo@mail.com");
 
         Agent agent1 = new Agent("Drew", "Barrymore", 123456, 20,10);
         Agent agent2 = new Agent("Kevin", "Hart", 123456, 20,10);
@@ -41,29 +43,6 @@ public class Main {
         agency1.addCustomer(customerJonas,customerMartin,customerPaul);
         agency1.addAgent(agent1,agent2,agent3);
 
-        try {
-            agency1.rentSearch(-8, "Chicago", customerMartin);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-        try {
-            agency1.buySearch(1, "zxfgfsdgsdfg", customerJonas);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-
-
-        agency1.makeBuyContract(customerJonas, 9, agent1);
-        agency1.makeRentContract(customerMartin, 3, agent1);
-        agency1.makeRentContract(customerMartin, 5, agent1);
-
-        agency1.showApartments();
-
-        System.out.println(agent1.getSaleCommission());
-
-
 
         if (owner1 == owner2){
             System.out.println("Same memory space reference");
@@ -80,5 +59,21 @@ public class Main {
         } else {
             System.out.println("Objects with different hash code");
         }
+
+        agency1.rentSearch(-8, "Chicago", customerMartin);
+
+
+        agency1.buySearch(1, "zxfgfsdgsdfg", customerJonas);
+
+
+
+
+        agency1.makeBuyContract(customerJonas, 9, agent1);
+        agency1.makeRentContract(customerMartin, 3, agent1);
+        agency1.makeRentContract(customerMartin, 5, agent1);
+
+        agency1.showContracts();
+
+
     }
 }

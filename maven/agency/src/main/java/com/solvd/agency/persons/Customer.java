@@ -2,6 +2,7 @@ package com.solvd.agency.persons;
 
 
 import com.solvd.agency.business.Apartment;
+import com.solvd.agency.exceptions.AmountException;
 
 import java.util.Objects;
 
@@ -10,17 +11,18 @@ public final class Customer extends Person {
     private String city;
     private String email;
     private static int idCounter;
-    private double amount;
+    private float amount;
     private Apartment[] apartments;
 
 
-    public Customer(String firstName, String lastName, long phoneNumber, double amount, String city, String email) {
+    public Customer(String firstName, String lastName, long phoneNumber, float amount, String city, String email) {
         super(firstName, lastName, phoneNumber);
         this.idClient = ++Customer.idCounter;
         this.amount = amount;
         this.city = city;
         this.email = email;
     }
+
 
     public void addApartments(Apartment... apartments){
         for (int i = 0; i < apartments.length; i++) {
@@ -32,11 +34,11 @@ public final class Customer extends Person {
         return idClient;
     }
 
-    public double getAmount() {
+    public float getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 

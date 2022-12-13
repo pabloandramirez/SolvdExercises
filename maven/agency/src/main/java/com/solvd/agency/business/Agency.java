@@ -1,5 +1,7 @@
 package com.solvd.agency.business;
 
+
+import com.solvd.agency.exceptions.AmountException;
 import com.solvd.agency.exceptions.LocationException;
 import com.solvd.agency.exceptions.RoomException;
 import com.solvd.agency.interfaces.*;
@@ -7,7 +9,9 @@ import com.solvd.agency.persons.Agent;
 import com.solvd.agency.persons.Customer;
 import com.solvd.agency.persons.Owner;
 
+
 import java.util.*;
+
 
 
 public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRentContract, IGetApartment {
@@ -19,6 +23,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
     private ArrayList<Agent> agents = new ArrayList<>();
     private ArrayList<Owner> owners = new ArrayList<>();
     private ArrayList<Contract> contracts = new ArrayList<>();
+
 
 
     public Agency(String name, String address, long phoneNumber) {
@@ -34,7 +39,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
             if (id == apartment.getIdApartment()){
                 apartmentFound = apartment;
             }
-        };
+        }
         return apartmentFound;
     }
 
@@ -46,124 +51,167 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                 apartmentsFound.add(apartment);
             }
         }
+        if (apartmentsFound.isEmpty()){
+            throw new LocationException();
+        }
         return apartmentsFound;
+    }
+
+    public boolean numberRooms(int rooms, int apartmentRooms){
+        boolean match = false;
+        if (rooms <= 0){
+            throw new RoomException();
+        } else {
+            if (rooms == apartmentRooms){
+                match = true;
+            }
+        }
+        return match;
+    }
+
+    public boolean compareAmount (float amount, float apartmentPrice){
+        boolean compare = false;
+        if (amount < 0){
+            throw new AmountException();
+        } else {
+            if (amount >= apartmentPrice){
+                compare = true;
+            }
+        }
+        return compare;
     }
 
     @Override
     public void makeBuyContract(Customer customer, int idApartment, Agent agent) {
-        Apartment thisApartment = this.findApartmentWithId(idApartment);
-        if (thisApartment.getAvailable() && thisApartment.getRentOrBuy() == IBuyContract.TYPE_OF_CONTRACT){
-            if (customer.getAmount() >= thisApartment.getPrice()) {
-                Contract contract = new Contract();
-                System.out.println("Customer " + customer.getFirstName() + " " + customer.getLastName()
-                        + " ID: " + customer.getIdClient()
-                        + " bought the apartment ID " + thisApartment.getIdApartment()
-                        + " to the owner " + thisApartment.getOwner()
-                        + ", throw the agent " + agent.getFirstName()
-                        + " " + agent.getLastName()
-                        + " ID: " + agent.getIdAgent()
-                        + " Contract ID: " + contract.getIdContract()
-                        + " Date of the Contract: " + contract.getDateOfContract()
-                );
-                agent.setSaleCommission((thisApartment.getPrice() * agent.getPercentageSaleCommission())/100);
-                this.getApartments().remove(thisApartment);
+        try{
+            Apartment thisApartment = this.findApartmentWithId(idApartment);
+            if (thisApartment.getAvailable() && thisApartment.getRentOrBuy() == IBuyContract.TYPE_OF_CONTRACT){
+                if (this.compareAmount(customer.getAmount(), thisApartment.getPrice())) {
+                    Contract contract = new Contract(thisApartment.getIdApartment(),
+                            thisApartment.getOwner().getFirstName()+ " " + thisApartment.getOwner().getLastName(),
+                            agent.getFirstName() + " " + agent.getLastName(), agent.getIdAgent(),
+                            customer.getFirstName() + " " + customer.getLastName(), customer.getIdClient());
+                    System.out.println("Customer " + customer.getFirstName() + " " + customer.getLastName()
+                            + " ID: " + customer.getIdClient()
+                            + " bought the apartment ID " + thisApartment.getIdApartment()
+                            + " to the owner " + thisApartment.getOwner()
+                            + ", throw the agent " + agent.getFirstName()
+                            + " " + agent.getLastName()
+                            + " ID: " + agent.getIdAgent()
+                            + " Contract ID: " + contract.getIdContract()
+                            + " Date of the Contract: " + contract.getDateOfContract()
+                    );
+                    this.addContract(contract);
+                    agent.setSaleCommission((thisApartment.getPrice() * agent.getPercentageSaleCommission())/100);
+                    this.getApartments().remove(thisApartment);
+                }
+            } else{
+                System.out.println("Apartment not available or not for sale");
+                System.out.println(thisApartment);
+                System.out.println(thisApartment.getIdApartment());
             }
-        } else{
-            System.out.println("Apartment not available or not for sale");
-            System.out.println(thisApartment);;
-            System.out.println(thisApartment.getIdApartment());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
+
     }
 
     @Override
     public void makeRentContract(Customer customer, int idApartment, Agent agent) {
-        Apartment thisApartment = this.findApartmentWithId(idApartment);
-        if (thisApartment.getAvailable() &&
-                thisApartment.getRentOrBuy() == IRentContract.TYPE_OF_CONTRACT){
-            if (customer.getAmount() >= thisApartment.getPrice()) {
-                Contract contract = new Contract();
-                System.out.println("Customer " + customer.getFirstName() + " " + customer.getLastName()
-                        + " ID: " + customer.getIdClient()
-                        + " rented the apartment ID " + thisApartment.getIdApartment()
-                        + " to the owner " + thisApartment.getOwner()
-                        + ", throw the agent " + agent.getFirstName()
-                        + " " + agent.getLastName()
-                        + " ID: " + agent.getIdAgent()
-                        + " Contract ID: " + contract.getIdContract()
-                        + " Date of the Contract: " + contract.getDateOfContract()
-                );
-                agent.setSaleCommission((thisApartment.getPrice() * agent.getPercentageSaleCommission())/100);
-                this.getApartments().remove(thisApartment);
+        try {
+            Apartment thisApartment = this.findApartmentWithId(idApartment);
+            if (thisApartment.getAvailable() &&
+                    thisApartment.getRentOrBuy() == IRentContract.TYPE_OF_CONTRACT){
+                if (this.compareAmount(customer.getAmount(), thisApartment.getPrice())) {
+                    Contract contract = new Contract(thisApartment.getIdApartment(),
+                            thisApartment.getOwner().getFirstName()+ " " + thisApartment.getOwner().getLastName(),
+                            agent.getFirstName() + " " + agent.getLastName(), agent.getIdAgent(),
+                            customer.getFirstName() + " " + customer.getLastName(), customer.getIdClient());
+                    System.out.println("Customer " + customer.getFirstName() + " " + customer.getLastName()
+                            + " ID: " + customer.getIdClient()
+                            + " rented the apartment ID " + thisApartment.getIdApartment()
+                            + " to the owner " + thisApartment.getOwner().getFirstName()
+                            + " " + thisApartment.getOwner().getLastName()
+                            + ", throw the agent " + agent.getFirstName()
+                            + " " + agent.getLastName()
+                            + " ID: " + agent.getIdAgent()
+                            + " Contract ID: " + contract.getIdContract()
+                            + " Date of the Contract: " + contract.getDateOfContract()
+                    );
+                    this.addContract(contract);
+                    agent.setSaleCommission((thisApartment.getPrice() * agent.getPercentageSaleCommission())/100);
+                    this.getApartments().remove(thisApartment);
+                }
+            } else{
+                System.out.println("Apartment not available or not for sale");
+                System.out.println(thisApartment);
+                System.out.println(thisApartment.getIdApartment());
             }
-        } else{
-            System.out.println("Apartment not available or not for sale");
-            System.out.println(thisApartment);;
-            System.out.println(thisApartment.getIdApartment());
+        } catch (RoomException | AmountException e){
+            System.out.println(e.getMessage());
         }
+
     }
 
     @Override
     public void buySearch(int rooms, String location, Customer customer) {
         int o = 1;
-        if (rooms > 0) {
-            if (!this.findApartmentWithLocation(location).isEmpty()){
-                int i=0;
-                for (Apartment apartment : this.apartments) {
-                    if (apartment.getAvailable()) {
-                        if (rooms == apartment.getNumberRooms()) {
-                            if (location.toLowerCase().equals(apartment.getLocation())) {
-                                if (customer.getAmount() >= apartment.getPrice()) {
-                                    if (apartment.getRentOrBuy() == RentOrBuy.FOR_BUY) {
-                                        System.out.println("Coincidence for buy " + (o++));
-                                        System.out.println(apartment);
-                                        i++;
-                                    }
+        try {
+            int i=0;
+            for (Apartment apartment : this.apartments) {
+                if (apartment.getAvailable()) {
+                    if (this.numberRooms(rooms, apartment.getNumberRooms())) {
+                        if (this.compareAmount(customer.getAmount(), apartment.getPrice())) {
+                            if (location.toLowerCase().equals(apartment.getLocation())){
+                                if (apartment.getRentOrBuy() == RentOrBuy.FOR_BUY) {
+                                    System.out.println("Coincidence for buy " + (o++));
+                                    System.out.println(apartment);
+                                    i++;
                                 }
                             }
                         }
                     }
-                } if (i == 0){
-                    System.out.println("There is no apartments for buy available with this number " +
-                            "of rooms, location or amount");
                 }
-            } else {
-                throw new LocationException();
+            } if (i == 0){
+                System.out.println("There is no apartments for buy available with this number " +
+                        "of rooms, location or amount");
             }
-        } else {
-            throw new RoomException();
+        } catch (RoomException | AmountException e){
+            System.out.println(e.getMessage());
         }
+
     }
 
     @Override
     public void rentSearch(int rooms, String location, Customer customer) {
         int o = 1;
-        if (rooms > 0){
-            if (!this.findApartmentWithLocation(location).isEmpty()) {
-                int i = 0;
-                for (Apartment apartment : this.apartments) {
-                    if (apartment.getAvailable()) {
-                        if (rooms == apartment.getNumberRooms()) {
+        try {
+            int i = 0;
+            for (Apartment apartment : this.apartments) {
+                if (apartment.getAvailable()) {
+                    if (this.numberRooms(rooms, apartment.getNumberRooms())) {
+                        if (this.compareAmount(customer.getAmount(), apartment.getPrice())){
                             if (location.toLowerCase().equals(apartment.getLocation())) {
-                                if (customer.getAmount() >= apartment.getPrice()) {
-                                    if (apartment.getRentOrBuy() == RentOrBuy.FOR_RENT) {
-                                        System.out.println("Coincidence for rent " + (o++));
-                                        System.out.println(apartment);
-                                        i++;
-                                    }
+                                if (apartment.getRentOrBuy() == RentOrBuy.FOR_RENT) {
+                                    System.out.println("Coincidence for rent " + (o++));
+                                    System.out.println(apartment);
+                                    i++;
                                 }
                             }
                         }
                     }
-                } if (i == 0){
-                    System.out.println("There is no apartments for rent available with this number " +
-                            "of rooms, location or amount");
                 }
-            } else{
-                throw new LocationException();
+            } if (i == 0){
+                System.out.println("There is no apartments for rent available with this number " +
+                        "of rooms, location or amount");
             }
-        } else {
-            throw new RoomException();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
+    }
+
+    public void addContract(Contract... contracts){
+        this.contracts.addAll(Arrays.asList(contracts));
     }
 
 
@@ -212,6 +260,12 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
     public void showAgents(){
         for (Agent agent : agents) {
             System.out.println(agent + " ");
+        }
+    }
+
+    public void showContracts(){
+        for (Contract contract: contracts) {
+            System.out.println(contract + " ");
         }
     }
 
