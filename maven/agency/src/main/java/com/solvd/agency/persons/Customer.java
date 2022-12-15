@@ -25,9 +25,7 @@ public final class Customer extends Person {
 
 
     public void addApartments(Apartment... apartments){
-        for (int i = 0; i < apartments.length; i++) {
-            this.apartments[i] = apartments[i];
-        }
+        System.arraycopy(apartments, 0, this.apartments, 0, apartments.length);
     }
 
     public int getIdClient() {
@@ -74,7 +72,8 @@ public final class Customer extends Person {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Customer customer = (Customer) o;
-        return idClient == customer.idClient && Double.compare(customer.amount, amount) == 0 && city.equals(customer.city) && email.equals(customer.email);
+        return idClient == customer.idClient && Double.compare(customer.amount, amount) == 0 &&
+                city.equals(customer.city) && email.equals(customer.email);
     }
 
     @Override

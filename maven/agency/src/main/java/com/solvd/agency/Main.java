@@ -7,7 +7,7 @@ import com.solvd.agency.persons.Agent;
 import com.solvd.agency.persons.Customer;
 import com.solvd.agency.persons.Owner;
 
-import org.apache.logging.log4j.Logger;
+import static com.solvd.agency.business.Agency.LOGGER;
 
 public class Main {
 
@@ -45,19 +45,19 @@ public class Main {
 
 
         if (owner1 == owner2){
-            System.out.println("Same memory space reference");
+            LOGGER.info("Same memory space reference");
         } else {
-            System.out.println("Not same memory space reference");
+            LOGGER.info("Not same memory space reference");
         }
         if (owner1.equals(owner2)){
-            System.out.println("Objects with same content");
+            LOGGER.info("Objects with same content");
         } else {
-            System.out.println("Objects with different content");
+            LOGGER.info("Objects with different content");
         }
         if (owner1.hashCode() == owner2.hashCode()){
-            System.out.println("Objects with same hash code");
+            LOGGER.info("Objects with same hash code");
         } else {
-            System.out.println("Objects with different hash code");
+            LOGGER.info("Objects with different hash code");
         }
 
         agency1.rentSearch(-8, "Chicago", customerMartin);

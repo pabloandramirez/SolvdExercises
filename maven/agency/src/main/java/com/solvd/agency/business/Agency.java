@@ -8,6 +8,8 @@ import com.solvd.agency.interfaces.*;
 import com.solvd.agency.persons.Agent;
 import com.solvd.agency.persons.Customer;
 import com.solvd.agency.persons.Owner;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 import java.util.*;
@@ -23,6 +25,8 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
     private ArrayList<Agent> agents = new ArrayList<>();
     private ArrayList<Owner> owners = new ArrayList<>();
     private ArrayList<Contract> contracts = new ArrayList<>();
+
+    public static final Logger LOGGER = (Logger) LogManager.getLogger(Agency.class);
 
 
 
@@ -91,7 +95,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                             thisApartment.getOwner().getFirstName()+ " " + thisApartment.getOwner().getLastName(),
                             agent.getFirstName() + " " + agent.getLastName(), agent.getIdAgent(),
                             customer.getFirstName() + " " + customer.getLastName(), customer.getIdClient());
-                    System.out.println("Customer " + customer.getFirstName() + " " + customer.getLastName()
+                    LOGGER.info("Customer " + customer.getFirstName() + " " + customer.getLastName()
                             + " ID: " + customer.getIdClient()
                             + " bought the apartment ID " + thisApartment.getIdApartment()
                             + " to the owner " + thisApartment.getOwner()
@@ -106,12 +110,10 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                     this.getApartments().remove(thisApartment);
                 }
             } else{
-                System.out.println("Apartment not available or not for sale");
-                System.out.println(thisApartment);
-                System.out.println(thisApartment.getIdApartment());
+                LOGGER.info("Apartment not available or not for sale");
             }
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            LOGGER.warn(e.getMessage());
         }
 
     }
@@ -127,7 +129,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                             thisApartment.getOwner().getFirstName()+ " " + thisApartment.getOwner().getLastName(),
                             agent.getFirstName() + " " + agent.getLastName(), agent.getIdAgent(),
                             customer.getFirstName() + " " + customer.getLastName(), customer.getIdClient());
-                    System.out.println("Customer " + customer.getFirstName() + " " + customer.getLastName()
+                    LOGGER.info("Customer " + customer.getFirstName() + " " + customer.getLastName()
                             + " ID: " + customer.getIdClient()
                             + " rented the apartment ID " + thisApartment.getIdApartment()
                             + " to the owner " + thisApartment.getOwner().getFirstName()
@@ -143,12 +145,10 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                     this.getApartments().remove(thisApartment);
                 }
             } else{
-                System.out.println("Apartment not available or not for sale");
-                System.out.println(thisApartment);
-                System.out.println(thisApartment.getIdApartment());
+                LOGGER.info("Apartment not available or not for sale");
             }
         } catch (RoomException | AmountException e){
-            System.out.println(e.getMessage());
+            LOGGER.warn(e.getMessage());
         }
 
     }
@@ -164,8 +164,8 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                         if (this.compareAmount(customer.getAmount(), apartment.getPrice())) {
                             if (location.toLowerCase().equals(apartment.getLocation())){
                                 if (apartment.getRentOrBuy() == RentOrBuy.FOR_BUY) {
-                                    System.out.println("Coincidence for buy " + (o++));
-                                    System.out.println(apartment);
+                                    LOGGER.info("Coincidence for buy " + (o++));
+                                    LOGGER.info(apartment);
                                     i++;
                                 }
                             }
@@ -173,11 +173,11 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                     }
                 }
             } if (i == 0){
-                System.out.println("There is no apartments for buy available with this number " +
+                LOGGER.info("There is no apartments for buy available with this number " +
                         "of rooms, location or amount");
             }
         } catch (RoomException | AmountException e){
-            System.out.println(e.getMessage());
+            LOGGER.warn(e.getMessage());
         }
 
     }
@@ -193,8 +193,8 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                         if (this.compareAmount(customer.getAmount(), apartment.getPrice())){
                             if (location.toLowerCase().equals(apartment.getLocation())) {
                                 if (apartment.getRentOrBuy() == RentOrBuy.FOR_RENT) {
-                                    System.out.println("Coincidence for rent " + (o++));
-                                    System.out.println(apartment);
+                                    LOGGER.info("Coincidence for rent " + (o++));
+                                    LOGGER.info(apartment);
                                     i++;
                                 }
                             }
@@ -202,11 +202,11 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                     }
                 }
             } if (i == 0){
-                System.out.println("There is no apartments for rent available with this number " +
+                LOGGER.info("There is no apartments for rent available with this number " +
                         "of rooms, location or amount");
             }
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            LOGGER.warn(e.getMessage());
         }
     }
 
@@ -241,31 +241,31 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
 
     public void showApartments(){
         for (Apartment apartment : apartments) {
-            System.out.println(apartment + " ");
+            LOGGER.info(apartment + " ");
         }
     }
 
     public void showCustomers(){
         for (Customer customer : customers) {
-            System.out.println(customer + " ");
+            LOGGER.info(customer + " ");
         }
     }
 
     public void showOwners(){
         for (Owner owner : owners) {
-            System.out.println(owner + " ");
+            LOGGER.info(owner + " ");
         }
     }
 
     public void showAgents(){
         for (Agent agent : agents) {
-            System.out.println(agent + " ");
+            LOGGER.info(agent + " ");
         }
     }
 
     public void showContracts(){
         for (Contract contract: contracts) {
-            System.out.println(contract + " ");
+            LOGGER.info(contract + " ");
         }
     }
 

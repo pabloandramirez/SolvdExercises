@@ -72,7 +72,10 @@ public final class Agent extends Person {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Agent agent = (Agent) o;
-        return idAgent == agent.idAgent && Float.compare(agent.saleCommission, saleCommission) == 0 && Float.compare(agent.rentCommission, rentCommission) == 0 && Float.compare(agent.percentageSaleCommission, percentageSaleCommission) == 0 && Float.compare(agent.percentageRentCommission, percentageRentCommission) == 0;
+        return idAgent == agent.idAgent && Float.compare(agent.saleCommission, saleCommission) == 0 &&
+                Float.compare(agent.rentCommission, rentCommission) == 0 &&
+                Float.compare(agent.percentageSaleCommission, percentageSaleCommission) == 0 &&
+                Float.compare(agent.percentageRentCommission, percentageRentCommission) == 0;
     }
 
     @Override

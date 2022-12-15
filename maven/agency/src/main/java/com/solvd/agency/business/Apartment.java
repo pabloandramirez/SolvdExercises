@@ -97,7 +97,10 @@ public final class Apartment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Apartment apartment = (Apartment) o;
-        return idApartment == apartment.idApartment && Float.compare(apartment.price, price) == 0 && numberRooms == apartment.numberRooms && available == apartment.available && location.equals(apartment.location) && owner.equals(apartment.owner) && rentOrBuy == apartment.rentOrBuy;
+        return idApartment == apartment.idApartment && Float.compare(apartment.price, price) == 0
+                && numberRooms == apartment.numberRooms && available == apartment.available
+                && location.equals(apartment.location) && owner.equals(apartment.owner)
+                && rentOrBuy == apartment.rentOrBuy;
     }
 
     @Override
