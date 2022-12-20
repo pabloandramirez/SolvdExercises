@@ -61,6 +61,14 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
         return apartmentsFound;
     }
 
+    public boolean apartmentFound(String location, Apartment apartment){
+        boolean apartmentFound = location.toLowerCase().equals(apartment.getLocation());
+        if (!apartmentFound){
+            throw new LocationException();
+        }
+        return apartmentFound;
+    }
+
     public boolean numberRooms(int rooms, int apartmentRooms){
         boolean match = false;
         if (rooms <= 0){
@@ -107,12 +115,12 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                     );
                     this.addContract(contract);
                     agent.setSaleCommission((thisApartment.getPrice() * agent.getPercentageSaleCommission())/100);
-                    this.getApartments().remove(thisApartment);
+                    this.removeApartment(idApartment);
                 }
             } else{
                 LOGGER.info("Apartment not available or not for sale");
             }
-        } catch (Exception e){
+        } catch (RoomException | AmountException e){
             LOGGER.warn(e.getMessage());
         }
 
@@ -142,7 +150,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                     );
                     this.addContract(contract);
                     agent.setSaleCommission((thisApartment.getPrice() * agent.getPercentageSaleCommission())/100);
-                    this.getApartments().remove(thisApartment);
+                    this.removeApartment(idApartment);
                 }
             } else{
                 LOGGER.info("Apartment not available or not for sale");
@@ -162,7 +170,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                 if (apartment.getAvailable()) {
                     if (this.numberRooms(rooms, apartment.getNumberRooms())) {
                         if (this.compareAmount(customer.getAmount(), apartment.getPrice())) {
-                            if (location.toLowerCase().equals(apartment.getLocation())){
+                            if (this.apartmentFound(location, apartment)){
                                 if (apartment.getRentOrBuy() == RentOrBuy.FOR_BUY) {
                                     LOGGER.info("Coincidence for buy " + (o++));
                                     LOGGER.info(apartment);
@@ -176,7 +184,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                 LOGGER.info("There is no apartments for buy available with this number " +
                         "of rooms, location or amount");
             }
-        } catch (RoomException | AmountException e){
+        } catch (RoomException | AmountException | LocationException e){
             LOGGER.warn(e.getMessage());
         }
 
@@ -191,7 +199,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                 if (apartment.getAvailable()) {
                     if (this.numberRooms(rooms, apartment.getNumberRooms())) {
                         if (this.compareAmount(customer.getAmount(), apartment.getPrice())){
-                            if (location.toLowerCase().equals(apartment.getLocation())) {
+                            if (this.apartmentFound(location, apartment)) {
                                 if (apartment.getRentOrBuy() == RentOrBuy.FOR_RENT) {
                                     LOGGER.info("Coincidence for rent " + (o++));
                                     LOGGER.info(apartment);
@@ -205,7 +213,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                 LOGGER.info("There is no apartments for rent available with this number " +
                         "of rooms, location or amount");
             }
-        } catch (Exception e){
+        } catch (RoomException | AmountException | LocationException e){
             LOGGER.warn(e.getMessage());
         }
     }
@@ -236,7 +244,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
     }
 
     public void removeApartment(int idApartment){
-        this.apartments.remove(idApartment);
+        apartments.removeIf(apartment -> idApartment == apartment.getIdApartment());
     }
 
     public void showApartments(){

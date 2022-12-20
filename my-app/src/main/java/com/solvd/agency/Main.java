@@ -49,7 +49,7 @@ public class Main {
 
 
         if (owner1 == owner2){
-            System.out.println("Same memory space reference");
+            LOGGER.info("Same memory space reference");
         } else {
             LOGGER.info("Not same memory space reference");
         }
