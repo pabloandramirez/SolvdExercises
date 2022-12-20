@@ -1,1 +1,3 @@
 my-app/.idea
+*.iml
+my-app/target
