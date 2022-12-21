@@ -12,7 +12,7 @@ import static com.solvd.agency.business.Agency.LOGGER;
 public class Main {
 
     public static void main(String[] args) {
-        Owner owner1 = new Owner("John", "Doe", 1234567);
+        Owner owner1 = new Owner("John", "77p", 1234567);
         Owner owner2 = new Owner("Meryl", "Streep", 2345678);
         Owner owner3 = new Owner("Jason", "Momoa", 3456789);
 
@@ -46,6 +46,7 @@ public class Main {
         agency1.showApartments();
         agency1.showAgents();
         agency1.showCustomers();
+        agency1.showOwners();
 
 
         if (owner1 == owner2){

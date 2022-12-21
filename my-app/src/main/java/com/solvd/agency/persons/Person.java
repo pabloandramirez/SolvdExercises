@@ -1,15 +1,20 @@
 package com.solvd.agency.persons;
 
+import com.solvd.agency.exceptions.FieldException;
+import com.solvd.agency.interfaces.ICheckStringField;
+
 import java.util.Objects;
 
-abstract class Person {
+import static com.solvd.agency.business.Agency.LOGGER;
+
+abstract class Person implements ICheckStringField {
     private String firstName;
     private String lastName;
     private long phoneNumber;
 
     public Person(String firstName, String lastName, long phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        setFirstName(firstName);
+        setLastName(lastName);
         this.phoneNumber = phoneNumber;
     }
 
@@ -18,15 +23,26 @@ abstract class Person {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        try {
+            checkStringField(firstName);
+            this.firstName = firstName;
+        } catch (FieldException e){
+            LOGGER.warn(e.getMessage(), e);
+        }
     }
+
 
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        try {
+            checkStringField(lastName);
+            this.lastName = lastName;
+        } catch (FieldException e){
+            LOGGER.warn(e.getMessage(), e);
+        }
     }
 
     public long getPhoneNumber() {
@@ -36,6 +52,14 @@ abstract class Person {
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    @Override
+    public void checkStringField(String field){
+        if (field.chars().anyMatch(Character::isDigit)){
+            throw new FieldException();
+        }
+    }
+
 
     @Override
     public String toString() {
