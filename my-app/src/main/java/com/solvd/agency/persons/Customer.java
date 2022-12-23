@@ -23,7 +23,7 @@ public final class Customer extends Person {
     }
 
 
-    public void addApartments(Apartment... apartments){
+    public void addApartments(Apartment... apartments) {
         System.arraycopy(apartments, 0, this.apartments, 0, apartments.length);
     }
 

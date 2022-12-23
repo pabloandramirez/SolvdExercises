@@ -28,7 +28,7 @@ abstract class Person implements ICheckStringField, ICheckNumberField {
         try {
             checkStringField(firstName);
             this.firstName = firstName;
-        } catch (StringFieldException e){
+        } catch (StringFieldException e) {
             LOGGER.warn(e.getMessage(), e);
         }
     }
@@ -42,7 +42,7 @@ abstract class Person implements ICheckStringField, ICheckNumberField {
         try {
             checkStringField(lastName);
             this.lastName = lastName;
-        } catch (StringFieldException e){
+        } catch (StringFieldException e) {
             LOGGER.warn(e.getMessage(), e);
         }
     }
@@ -55,21 +55,21 @@ abstract class Person implements ICheckStringField, ICheckNumberField {
         try {
             checkNumberField(phoneNumber);
             this.phoneNumber = phoneNumber;
-        } catch (NumberFieldException e){
+        } catch (NumberFieldException e) {
             LOGGER.warn(e.getMessage(), e);
         }
     }
 
     @Override
-    public void checkNumberField(String number){
-        if (number.chars().anyMatch(Character::isAlphabetic)){
+    public void checkNumberField(String number) {
+        if (number.chars().anyMatch(Character::isAlphabetic)) {
             throw new NumberFieldException();
         }
     }
 
     @Override
-    public void checkStringField(String field){
-        if (field.chars().anyMatch(Character::isDigit)){
+    public void checkStringField(String field) {
+        if (field.chars().anyMatch(Character::isDigit)) {
             throw new StringFieldException();
         }
     }

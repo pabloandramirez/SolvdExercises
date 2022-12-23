@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Contract implements IDateFormatter{
+public class Contract implements IDateFormatter {
     private final int idContract;
     private int idApartment;
     private String ownerFullName;
@@ -19,7 +19,7 @@ public class Contract implements IDateFormatter{
 
     private final String dateOfContract;
 
-    public Contract(int idApartment, String ownerFullName, String agentFullName, int idAgent, String customerFullName, int idCustomer){
+    public Contract(int idApartment, String ownerFullName, String agentFullName, int idAgent, String customerFullName, int idCustomer) {
         this.idApartment = idApartment;
         this.ownerFullName = ownerFullName;
         this.agentFullName = agentFullName;
@@ -87,7 +87,7 @@ public class Contract implements IDateFormatter{
     }
 
     @Override
-    public String dateFormatter(LocalDate dateOfContract){
+    public String dateFormatter(LocalDate dateOfContract) {
         DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return dateOfContract.format(myFormat);
     }

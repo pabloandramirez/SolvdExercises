@@ -79,6 +79,11 @@ public class Main {
 
         agency1.showContracts();
 
+        LOGGER.info(agent1.getRentCommission());
+        LOGGER.info(agent1.getSaleCommission());
+
+
+
 
     }
 }

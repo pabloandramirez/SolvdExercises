@@ -1,8 +1,8 @@
 package com.solvd.agency.exceptions;
 
-public class NumberFieldException extends IllegalArgumentException{
+public class NumberFieldException extends IllegalArgumentException {
 
-    public NumberFieldException(){
+    public NumberFieldException() {
         super("The field must contain only numbers");
     }
 }
