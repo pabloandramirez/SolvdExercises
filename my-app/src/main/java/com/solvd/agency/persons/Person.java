@@ -29,7 +29,7 @@ abstract class Person implements ICheckStringField, ICheckNumberField {
             checkStringField(firstName);
             this.firstName = firstName;
         } catch (StringFieldException e) {
-            LOGGER.warn(e.getMessage(), e);
+            LOGGER.warn(e.getMessage());
         }
     }
 
@@ -43,7 +43,7 @@ abstract class Person implements ICheckStringField, ICheckNumberField {
             checkStringField(lastName);
             this.lastName = lastName;
         } catch (StringFieldException e) {
-            LOGGER.warn(e.getMessage(), e);
+            LOGGER.warn(e.getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ abstract class Person implements ICheckStringField, ICheckNumberField {
             checkNumberField(phoneNumber);
             this.phoneNumber = phoneNumber;
         } catch (NumberFieldException e) {
-            LOGGER.warn(e.getMessage(), e);
+            LOGGER.warn(e.getMessage());
         }
     }
 

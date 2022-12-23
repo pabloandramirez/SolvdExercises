@@ -172,7 +172,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                         "of rooms, location or amount");
             }
         } catch (RoomException | AmountException | LocationException e) {
-            LOGGER.warn(e.getMessage(), e);
+            LOGGER.warn(e.getMessage());
         }
 
     }
@@ -202,7 +202,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                         "of rooms, location or amount");
             }
         } catch (RoomException | AmountException | LocationException e) {
-            LOGGER.warn(e.getMessage(), e);
+            LOGGER.warn(e.getMessage());
         }
     }
 
