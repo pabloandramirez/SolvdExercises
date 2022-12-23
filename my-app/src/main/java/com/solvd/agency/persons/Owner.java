@@ -7,7 +7,7 @@ public final class Owner extends Person {
     private final int idOwner;
     private static int idCounter;
 
-    public Owner(String firstName, String lastName, long phoneNumber){
+    public Owner(String firstName, String lastName, String phoneNumber){
         super(firstName, lastName, phoneNumber);
         this.idOwner = ++Owner.idCounter;
     }

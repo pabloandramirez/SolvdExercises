@@ -10,7 +10,7 @@ public final class Agent extends Person {
     private float percentageSaleCommission;
     private float percentageRentCommission;
 
-    public Agent(String firstName, String lastName, long phoneNumber, float percentageSaleCommission, float percentageRentCommission){
+    public Agent(String firstName, String lastName, String phoneNumber, float percentageSaleCommission, float percentageRentCommission){
         super(firstName, lastName, phoneNumber);
         this.idAgent = ++Agent.idCounter;
         this.percentageRentCommission = percentageRentCommission;

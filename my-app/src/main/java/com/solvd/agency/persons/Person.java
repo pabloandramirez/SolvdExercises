@@ -1,21 +1,23 @@
 package com.solvd.agency.persons;
 
-import com.solvd.agency.exceptions.FieldException;
+import com.solvd.agency.exceptions.NumberFieldException;
+import com.solvd.agency.exceptions.StringFieldException;
+import com.solvd.agency.interfaces.ICheckNumberField;
 import com.solvd.agency.interfaces.ICheckStringField;
 
 import java.util.Objects;
 
 import static com.solvd.agency.business.Agency.LOGGER;
 
-abstract class Person implements ICheckStringField {
+abstract class Person implements ICheckStringField, ICheckNumberField {
     private String firstName;
     private String lastName;
-    private long phoneNumber;
+    private String phoneNumber;
 
-    public Person(String firstName, String lastName, long phoneNumber) {
+    public Person(String firstName, String lastName, String phoneNumber) {
         setFirstName(firstName);
         setLastName(lastName);
-        this.phoneNumber = phoneNumber;
+        setPhoneNumber(phoneNumber);
     }
 
     public String getFirstName() {
@@ -26,7 +28,7 @@ abstract class Person implements ICheckStringField {
         try {
             checkStringField(firstName);
             this.firstName = firstName;
-        } catch (FieldException e){
+        } catch (StringFieldException e){
             LOGGER.warn(e.getMessage(), e);
         }
     }
@@ -40,23 +42,35 @@ abstract class Person implements ICheckStringField {
         try {
             checkStringField(lastName);
             this.lastName = lastName;
-        } catch (FieldException e){
+        } catch (StringFieldException e){
             LOGGER.warn(e.getMessage(), e);
         }
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        try {
+            checkNumberField(phoneNumber);
+            this.phoneNumber = phoneNumber;
+        } catch (NumberFieldException e){
+            LOGGER.warn(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void checkNumberField(String number){
+        if (number.chars().anyMatch(Character::isAlphabetic)){
+            throw new NumberFieldException();
+        }
     }
 
     @Override
     public void checkStringField(String field){
         if (field.chars().anyMatch(Character::isDigit)){
-            throw new FieldException();
+            throw new StringFieldException();
         }
     }
 

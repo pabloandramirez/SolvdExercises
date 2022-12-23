@@ -698,7 +698,7 @@ com.solvd.agency.exceptions.LocationException: There is no apartments with this 
 2022-12-21 05:03:52.303 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=2, idApartment=3, ownerFullName='John 88iij', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='21-12-2022'} 
 2022-12-21 05:03:52.304 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=3, idApartment=5, ownerFullName='Meryl Streep', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='21-12-2022'} 
 2022-12-21 05:04:04.333 [main] WARN  com.solvd.agency.business.Agency - The field must contain only letters
-com.solvd.agency.exceptions.FieldException: The field must contain only letters
+com.solvd.agency.exceptions.StringFieldException: The field must contain only letters
 	at com.solvd.agency.persons.Person.checkStringField(Person.java:35) ~[classes/:?]
 	at com.solvd.agency.persons.Owner.checkStringField(Owner.java:6) ~[classes/:?]
 	at com.solvd.agency.persons.Person.setLastName(Person.java:45) ~[classes/:?]
@@ -741,7 +741,7 @@ com.solvd.agency.exceptions.LocationException: There is no apartments with this 
 2022-12-21 05:04:04.388 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=2, idApartment=3, ownerFullName='John null', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='21-12-2022'} 
 2022-12-21 05:04:04.389 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=3, idApartment=5, ownerFullName='Meryl Streep', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='21-12-2022'} 
 2022-12-21 05:10:16.942 [main] WARN  com.solvd.agency.business.Agency - The field must contain only letters
-com.solvd.agency.exceptions.FieldException: The field must contain only letters
+com.solvd.agency.exceptions.StringFieldException: The field must contain only letters
 	at com.solvd.agency.persons.Person.checkStringField(Person.java:35) ~[classes/:?]
 	at com.solvd.agency.persons.Owner.checkStringField(Owner.java:6) ~[classes/:?]
 	at com.solvd.agency.persons.Person.setLastName(Person.java:45) ~[classes/:?]
@@ -818,7 +818,7 @@ com.solvd.agency.exceptions.LocationException: There is no apartments with this 
 2022-12-21 05:11:24.457 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=2, idApartment=3, ownerFullName='John Momoa', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='21-12-2022'} 
 2022-12-21 05:11:24.457 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=3, idApartment=5, ownerFullName='Meryl Streep', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='21-12-2022'} 
 2022-12-21 05:11:52.683 [main] WARN  com.solvd.agency.business.Agency - The field must contain only letters
-com.solvd.agency.exceptions.FieldException: The field must contain only letters
+com.solvd.agency.exceptions.StringFieldException: The field must contain only letters
 	at com.solvd.agency.persons.Person.checkStringField(Person.java:35) ~[classes/:?]
 	at com.solvd.agency.persons.Owner.checkStringField(Owner.java:6) ~[classes/:?]
 	at com.solvd.agency.persons.Person.setLastName(Person.java:45) ~[classes/:?]
@@ -861,7 +861,7 @@ com.solvd.agency.exceptions.LocationException: There is no apartments with this 
 2022-12-21 05:11:52.750 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=2, idApartment=3, ownerFullName='John null', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='21-12-2022'} 
 2022-12-21 05:11:52.750 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=3, idApartment=5, ownerFullName='Meryl Streep', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='21-12-2022'} 
 2022-12-21 05:13:25.449 [main] WARN  com.solvd.agency.business.Agency - The field must contain only letters
-com.solvd.agency.exceptions.FieldException: The field must contain only letters
+com.solvd.agency.exceptions.StringFieldException: The field must contain only letters
 	at com.solvd.agency.persons.Person.checkStringField(Person.java:35) ~[classes/:?]
 	at com.solvd.agency.persons.Owner.checkStringField(Owner.java:6) ~[classes/:?]
 	at com.solvd.agency.persons.Person.setLastName(Person.java:45) ~[classes/:?]
@@ -906,3 +906,150 @@ com.solvd.agency.exceptions.LocationException: There is no apartments with this 
 2022-12-21 05:13:25.514 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=1, idApartment=9, ownerFullName='Jason Momoa', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Jonas Johnson', idCustomer=3, dateOfContract='21-12-2022'} 
 2022-12-21 05:13:25.514 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=2, idApartment=3, ownerFullName='John null', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='21-12-2022'} 
 2022-12-21 05:13:25.514 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=3, idApartment=5, ownerFullName='Meryl Streep', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='21-12-2022'} 
+2022-12-23 02:27:53.315 [main] WARN  com.solvd.agency.business.Agency - The field must contain only letters
+com.solvd.agency.exceptions.StringFieldException: The field must contain only letters
+	at com.solvd.agency.persons.Person.checkStringField(Person.java:59) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.checkStringField(Owner.java:6) ~[classes/:?]
+	at com.solvd.agency.persons.Person.setLastName(Person.java:41) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.setLastName(Owner.java:6) ~[classes/:?]
+	at com.solvd.agency.persons.Person.<init>(Person.java:17) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.<init>(Owner.java:11) ~[classes/:?]
+	at com.solvd.agency.Main.main(Main.java:15) ~[classes/:?]
+2022-12-23 02:27:53.344 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=1, location='Los Angeles', price=5000.0, numberRooms=5, available=true, for rent or for buy=FOR_BUY, owner=John null, owner contact=1234567} 
+2022-12-23 02:27:53.345 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=2, location='New York', price=4000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=John null, owner contact=1234567} 
+2022-12-23 02:27:53.345 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=3, location='Chicago', price=3500.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=John null, owner contact=1234567} 
+2022-12-23 02:27:53.345 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=4, location='Los Angeles', price=1500.0, numberRooms=1, available=true, for rent or for buy=FOR_BUY, owner=Meryl Streep, owner contact=2345678} 
+2022-12-23 02:27:53.345 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=5, location='Chicago', price=2000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678} 
+2022-12-23 02:27:53.346 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=6, location='Santa Cruz', price=6000.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678} 
+2022-12-23 02:27:53.346 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=7, location='New Jersey', price=3500.0, numberRooms=2, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789} 
+2022-12-23 02:27:53.346 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=8, location='Washington', price=5500.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Jason Momoa, owner contact=3456789} 
+2022-12-23 02:27:53.346 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=9, location='Chicago', price=7000.0, numberRooms=3, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789} 
+2022-12-23 02:27:53.347 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=1, percentageSaleCommission=20.0, percentageRentCommission=10.0, saleCommission=0.0, rentCommission=0.0, person=Person{firstName='Drew', lastName='Barrymore', phoneNumber=123456}} 
+2022-12-23 02:27:53.347 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=2, percentageSaleCommission=20.0, percentageRentCommission=10.0, saleCommission=0.0, rentCommission=0.0, person=Person{firstName='Kevin', lastName='Hart', phoneNumber=123456}} 
+2022-12-23 02:27:53.347 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=3, percentageSaleCommission=20.0, percentageRentCommission=10.0, saleCommission=0.0, rentCommission=0.0, person=Person{firstName='Dwayne', lastName='Johnson', phoneNumber=123456}} 
+2022-12-23 02:27:53.348 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=3, city='Los Angeles', email='pablo@mail.com', person=Person{firstName='Jonas', lastName='Johnson', phoneNumber=123456}} 
+2022-12-23 02:27:53.348 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=2, city='Missouri', email='pablo@mail.com', person=Person{firstName='Martin', lastName='Scorsese', phoneNumber=123456}} 
+2022-12-23 02:27:53.348 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=1, city='Chicago', email='pablo@mail.com', person=Person{firstName='Paul', lastName='Newman', phoneNumber=123456}} 
+2022-12-23 02:27:53.349 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=1, person=Person{firstName='John', lastName='null', phoneNumber=1234567}} 
+2022-12-23 02:27:53.350 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=2, person=Person{firstName='Meryl', lastName='Streep', phoneNumber=2345678}} 
+2022-12-23 02:27:53.350 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}} 
+2022-12-23 02:27:53.350 [main] INFO  com.solvd.agency.business.Agency - Not same memory space reference
+2022-12-23 02:27:53.350 [main] INFO  com.solvd.agency.business.Agency - Objects with different content
+2022-12-23 02:27:53.350 [main] INFO  com.solvd.agency.business.Agency - Objects with different hash code
+2022-12-23 02:27:53.351 [main] WARN  com.solvd.agency.business.Agency - The number of rooms must be above zero
+com.solvd.agency.exceptions.RoomException: The number of rooms must be above zero
+	at com.solvd.agency.business.Agency.numberRooms(Agency.java:75) ~[classes/:?]
+	at com.solvd.agency.business.Agency.rentSearch(Agency.java:190) ~[classes/:?]
+	at com.solvd.agency.Main.main(Main.java:68) ~[classes/:?]
+2022-12-23 02:27:53.351 [main] WARN  com.solvd.agency.business.Agency - There is no apartments with this location
+com.solvd.agency.exceptions.LocationException: There is no apartments with this location
+	at com.solvd.agency.business.Agency.apartmentFound(Agency.java:67) ~[classes/:?]
+	at com.solvd.agency.business.Agency.buySearch(Agency.java:163) ~[classes/:?]
+	at com.solvd.agency.Main.main(Main.java:71) ~[classes/:?]
+2022-12-23 02:27:53.378 [main] INFO  com.solvd.agency.business.Agency - Customer Jonas Johnson ID: 3 bought the apartment ID 9 to the owner Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}}, throw the agent Drew Barrymore ID: 1 Contract ID: 1 Date of the Contract: 23-12-2022
+2022-12-23 02:27:53.380 [main] INFO  com.solvd.agency.business.Agency - Customer Martin Scorsese ID: 2 rented the apartment ID 3 to the owner John null, throw the agent Drew Barrymore ID: 1 Contract ID: 2 Date of the Contract: 23-12-2022
+2022-12-23 02:27:53.382 [main] INFO  com.solvd.agency.business.Agency - Customer Martin Scorsese ID: 2 rented the apartment ID 5 to the owner Meryl Streep, throw the agent Drew Barrymore ID: 1 Contract ID: 3 Date of the Contract: 23-12-2022
+2022-12-23 02:27:53.383 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=1, idApartment=9, ownerFullName='Jason Momoa', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Jonas Johnson', idCustomer=3, dateOfContract='23-12-2022'} 
+2022-12-23 02:27:53.383 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=2, idApartment=3, ownerFullName='John null', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='23-12-2022'} 
+2022-12-23 02:27:53.383 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=3, idApartment=5, ownerFullName='Meryl Streep', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='23-12-2022'} 
+2022-12-23 02:49:18.965 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=1, location='Los Angeles', price=5000.0, numberRooms=5, available=true, for rent or for buy=FOR_BUY, owner=John Newman, owner contact=1234567} 
+2022-12-23 02:49:18.972 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=2, location='New York', price=4000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=John Newman, owner contact=1234567} 
+2022-12-23 02:49:18.973 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=3, location='Chicago', price=3500.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=John Newman, owner contact=1234567} 
+2022-12-23 02:49:18.973 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=4, location='Los Angeles', price=1500.0, numberRooms=1, available=true, for rent or for buy=FOR_BUY, owner=Meryl Streep, owner contact=2345678} 
+2022-12-23 02:49:18.973 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=5, location='Chicago', price=2000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678} 
+2022-12-23 02:49:18.973 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=6, location='Santa Cruz', price=6000.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678} 
+2022-12-23 02:49:18.974 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=7, location='New Jersey', price=3500.0, numberRooms=2, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789} 
+2022-12-23 02:49:18.974 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=8, location='Washington', price=5500.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Jason Momoa, owner contact=3456789} 
+2022-12-23 02:49:18.974 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=9, location='Chicago', price=7000.0, numberRooms=3, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789} 
+2022-12-23 02:49:18.975 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=1, percentageSaleCommission=20.0, percentageRentCommission=10.0, saleCommission=0.0, rentCommission=0.0, person=Person{firstName='Drew', lastName='Barrymore', phoneNumber=123456}} 
+2022-12-23 02:49:18.975 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=2, percentageSaleCommission=20.0, percentageRentCommission=10.0, saleCommission=0.0, rentCommission=0.0, person=Person{firstName='Kevin', lastName='Hart', phoneNumber=123456}} 
+2022-12-23 02:49:18.975 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=3, percentageSaleCommission=20.0, percentageRentCommission=10.0, saleCommission=0.0, rentCommission=0.0, person=Person{firstName='Dwayne', lastName='Johnson', phoneNumber=123456}} 
+2022-12-23 02:49:18.976 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=3, city='Los Angeles', email='pablo@mail.com', person=Person{firstName='Jonas', lastName='Johnson', phoneNumber=123456}} 
+2022-12-23 02:49:18.976 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=2, city='Missouri', email='pablo@mail.com', person=Person{firstName='Martin', lastName='Scorsese', phoneNumber=123456}} 
+2022-12-23 02:49:18.976 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=1, city='Chicago', email='pablo@mail.com', person=Person{firstName='Paul', lastName='Newman', phoneNumber=123456}} 
+2022-12-23 02:49:18.976 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=1, person=Person{firstName='John', lastName='Newman', phoneNumber=1234567}} 
+2022-12-23 02:49:18.976 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=2, person=Person{firstName='Meryl', lastName='Streep', phoneNumber=2345678}} 
+2022-12-23 02:49:18.976 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}} 
+2022-12-23 02:49:18.977 [main] INFO  com.solvd.agency.business.Agency - Not same memory space reference
+2022-12-23 02:49:18.977 [main] INFO  com.solvd.agency.business.Agency - Objects with different content
+2022-12-23 02:49:18.977 [main] INFO  com.solvd.agency.business.Agency - Objects with different hash code
+2022-12-23 02:49:18.977 [main] WARN  com.solvd.agency.business.Agency - The number of rooms must be above zero
+com.solvd.agency.exceptions.RoomException: The number of rooms must be above zero
+	at com.solvd.agency.business.Agency.numberRooms(Agency.java:73) ~[classes/:?]
+	at com.solvd.agency.business.Agency.rentSearch(Agency.java:188) ~[classes/:?]
+	at com.solvd.agency.Main.main(Main.java:68) ~[classes/:?]
+2022-12-23 02:49:18.998 [main] WARN  com.solvd.agency.business.Agency - There is no apartments with this location
+com.solvd.agency.exceptions.LocationException: There is no apartments with this location
+	at com.solvd.agency.business.Agency.apartmentFound(Agency.java:65) ~[classes/:?]
+	at com.solvd.agency.business.Agency.buySearch(Agency.java:161) ~[classes/:?]
+	at com.solvd.agency.Main.main(Main.java:71) ~[classes/:?]
+2022-12-23 02:49:19.024 [main] INFO  com.solvd.agency.business.Agency - Customer Jonas Johnson ID: 3 bought the apartment ID 9 to the owner Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}}, throw the agent Drew Barrymore ID: 1 Contract ID: 1 Date of the Contract: 23-12-2022
+2022-12-23 02:49:19.025 [main] INFO  com.solvd.agency.business.Agency - Customer Martin Scorsese ID: 2 rented the apartment ID 3 to the owner John Newman, throw the agent Drew Barrymore ID: 1 Contract ID: 2 Date of the Contract: 23-12-2022
+2022-12-23 02:49:19.026 [main] INFO  com.solvd.agency.business.Agency - Customer Martin Scorsese ID: 2 rented the apartment ID 5 to the owner Meryl Streep, throw the agent Drew Barrymore ID: 1 Contract ID: 3 Date of the Contract: 23-12-2022
+2022-12-23 02:49:19.026 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=1, idApartment=9, ownerFullName='Jason Momoa', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Jonas Johnson', idCustomer=3, dateOfContract='23-12-2022'} 
+2022-12-23 02:49:19.026 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=2, idApartment=3, ownerFullName='John Newman', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='23-12-2022'} 
+2022-12-23 02:49:19.027 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=3, idApartment=5, ownerFullName='Meryl Streep', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='23-12-2022'} 
+2022-12-23 02:49:39.350 [main] WARN  com.solvd.agency.business.Agency - The field must contain only letters
+com.solvd.agency.exceptions.StringFieldException: The field must contain only letters
+	at com.solvd.agency.persons.Person.checkStringField(Person.java:73) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.checkStringField(Owner.java:6) ~[classes/:?]
+	at com.solvd.agency.persons.Person.setFirstName(Person.java:29) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.setFirstName(Owner.java:6) ~[classes/:?]
+	at com.solvd.agency.persons.Person.<init>(Person.java:18) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.<init>(Owner.java:11) ~[classes/:?]
+	at com.solvd.agency.Main.main(Main.java:15) ~[classes/:?]
+2022-12-23 02:49:39.366 [main] WARN  com.solvd.agency.business.Agency - The field must contain only letters
+com.solvd.agency.exceptions.StringFieldException: The field must contain only letters
+	at com.solvd.agency.persons.Person.checkStringField(Person.java:73) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.checkStringField(Owner.java:6) ~[classes/:?]
+	at com.solvd.agency.persons.Person.setLastName(Person.java:43) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.setLastName(Owner.java:6) ~[classes/:?]
+	at com.solvd.agency.persons.Person.<init>(Person.java:19) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.<init>(Owner.java:11) ~[classes/:?]
+	at com.solvd.agency.Main.main(Main.java:15) ~[classes/:?]
+2022-12-23 02:49:39.367 [main] WARN  com.solvd.agency.business.Agency - The field must contain only numbers
+com.solvd.agency.exceptions.NumberFieldException: The field must contain only numbers
+	at com.solvd.agency.persons.Person.checkNumberField(Person.java:66) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.checkNumberField(Owner.java:6) ~[classes/:?]
+	at com.solvd.agency.persons.Person.setPhoneNumber(Person.java:56) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.setPhoneNumber(Owner.java:6) ~[classes/:?]
+	at com.solvd.agency.persons.Person.<init>(Person.java:20) ~[classes/:?]
+	at com.solvd.agency.persons.Owner.<init>(Owner.java:11) ~[classes/:?]
+	at com.solvd.agency.Main.main(Main.java:15) ~[classes/:?]
+2022-12-23 02:49:39.374 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=1, location='Los Angeles', price=5000.0, numberRooms=5, available=true, for rent or for buy=FOR_BUY, owner=null null, owner contact=null} 
+2022-12-23 02:49:39.374 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=2, location='New York', price=4000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=null null, owner contact=null} 
+2022-12-23 02:49:39.375 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=3, location='Chicago', price=3500.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=null null, owner contact=null} 
+2022-12-23 02:49:39.375 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=4, location='Los Angeles', price=1500.0, numberRooms=1, available=true, for rent or for buy=FOR_BUY, owner=Meryl Streep, owner contact=2345678} 
+2022-12-23 02:49:39.375 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=5, location='Chicago', price=2000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678} 
+2022-12-23 02:49:39.375 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=6, location='Santa Cruz', price=6000.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678} 
+2022-12-23 02:49:39.375 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=7, location='New Jersey', price=3500.0, numberRooms=2, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789} 
+2022-12-23 02:49:39.375 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=8, location='Washington', price=5500.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Jason Momoa, owner contact=3456789} 
+2022-12-23 02:49:39.376 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=9, location='Chicago', price=7000.0, numberRooms=3, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789} 
+2022-12-23 02:49:39.376 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=1, percentageSaleCommission=20.0, percentageRentCommission=10.0, saleCommission=0.0, rentCommission=0.0, person=Person{firstName='Drew', lastName='Barrymore', phoneNumber=123456}} 
+2022-12-23 02:49:39.376 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=2, percentageSaleCommission=20.0, percentageRentCommission=10.0, saleCommission=0.0, rentCommission=0.0, person=Person{firstName='Kevin', lastName='Hart', phoneNumber=123456}} 
+2022-12-23 02:49:39.376 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=3, percentageSaleCommission=20.0, percentageRentCommission=10.0, saleCommission=0.0, rentCommission=0.0, person=Person{firstName='Dwayne', lastName='Johnson', phoneNumber=123456}} 
+2022-12-23 02:49:39.376 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=3, city='Los Angeles', email='pablo@mail.com', person=Person{firstName='Jonas', lastName='Johnson', phoneNumber=123456}} 
+2022-12-23 02:49:39.377 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=2, city='Missouri', email='pablo@mail.com', person=Person{firstName='Martin', lastName='Scorsese', phoneNumber=123456}} 
+2022-12-23 02:49:39.377 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=1, city='Chicago', email='pablo@mail.com', person=Person{firstName='Paul', lastName='Newman', phoneNumber=123456}} 
+2022-12-23 02:49:39.377 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=1, person=Person{firstName='null', lastName='null', phoneNumber=null}} 
+2022-12-23 02:49:39.377 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=2, person=Person{firstName='Meryl', lastName='Streep', phoneNumber=2345678}} 
+2022-12-23 02:49:39.377 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}} 
+2022-12-23 02:49:39.377 [main] INFO  com.solvd.agency.business.Agency - Not same memory space reference
+2022-12-23 02:49:39.378 [main] INFO  com.solvd.agency.business.Agency - Objects with different content
+2022-12-23 02:49:39.378 [main] INFO  com.solvd.agency.business.Agency - Objects with different hash code
+2022-12-23 02:49:39.378 [main] WARN  com.solvd.agency.business.Agency - The number of rooms must be above zero
+com.solvd.agency.exceptions.RoomException: The number of rooms must be above zero
+	at com.solvd.agency.business.Agency.numberRooms(Agency.java:73) ~[classes/:?]
+	at com.solvd.agency.business.Agency.rentSearch(Agency.java:188) ~[classes/:?]
+	at com.solvd.agency.Main.main(Main.java:68) ~[classes/:?]
+2022-12-23 02:49:39.378 [main] WARN  com.solvd.agency.business.Agency - There is no apartments with this location
+com.solvd.agency.exceptions.LocationException: There is no apartments with this location
+	at com.solvd.agency.business.Agency.apartmentFound(Agency.java:65) ~[classes/:?]
+	at com.solvd.agency.business.Agency.buySearch(Agency.java:161) ~[classes/:?]
+	at com.solvd.agency.Main.main(Main.java:71) ~[classes/:?]
+2022-12-23 02:49:39.396 [main] INFO  com.solvd.agency.business.Agency - Customer Jonas Johnson ID: 3 bought the apartment ID 9 to the owner Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}}, throw the agent Drew Barrymore ID: 1 Contract ID: 1 Date of the Contract: 23-12-2022
+2022-12-23 02:49:39.396 [main] INFO  com.solvd.agency.business.Agency - Customer Martin Scorsese ID: 2 rented the apartment ID 3 to the owner null null, throw the agent Drew Barrymore ID: 1 Contract ID: 2 Date of the Contract: 23-12-2022
+2022-12-23 02:49:39.396 [main] INFO  com.solvd.agency.business.Agency - Customer Martin Scorsese ID: 2 rented the apartment ID 5 to the owner Meryl Streep, throw the agent Drew Barrymore ID: 1 Contract ID: 3 Date of the Contract: 23-12-2022
+2022-12-23 02:49:39.396 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=1, idApartment=9, ownerFullName='Jason Momoa', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Jonas Johnson', idCustomer=3, dateOfContract='23-12-2022'} 
+2022-12-23 02:49:39.404 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=2, idApartment=3, ownerFullName='null null', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='23-12-2022'} 
+2022-12-23 02:49:39.404 [main] INFO  com.solvd.agency.business.Agency - Contract{idContract=3, idApartment=5, ownerFullName='Meryl Streep', agentFullName='Drew Barrymore', idAgent=1, customerFullName='Martin Scorsese', idCustomer=2, dateOfContract='23-12-2022'} 

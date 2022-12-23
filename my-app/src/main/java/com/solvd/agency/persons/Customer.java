@@ -2,7 +2,6 @@ package com.solvd.agency.persons;
 
 
 import com.solvd.agency.business.Apartment;
-import com.solvd.agency.exceptions.AmountException;
 
 import java.util.Objects;
 
@@ -15,7 +14,7 @@ public final class Customer extends Person {
     private Apartment[] apartments;
 
 
-    public Customer(String firstName, String lastName, long phoneNumber, float amount, String city, String email) {
+    public Customer(String firstName, String lastName, String phoneNumber, float amount, String city, String email) {
         super(firstName, lastName, phoneNumber);
         this.idClient = ++Customer.idCounter;
         this.amount = amount;

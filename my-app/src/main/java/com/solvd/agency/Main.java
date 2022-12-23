@@ -12,17 +12,17 @@ import static com.solvd.agency.business.Agency.LOGGER;
 public class Main {
 
     public static void main(String[] args) {
-        Owner owner1 = new Owner("John", "77p", 1234567);
-        Owner owner2 = new Owner("Meryl", "Streep", 2345678);
-        Owner owner3 = new Owner("Jason", "Momoa", 3456789);
+        Owner owner1 = new Owner("asff5", "fsar666", "fsff");
+        Owner owner2 = new Owner("Meryl", "Streep", "2345678");
+        Owner owner3 = new Owner("Jason", "Momoa", "3456789");
 
-        Customer customerPaul = new Customer("Paul", "Newman", 123456, 9000, "Chicago", "pablo@mail.com");
-        Customer customerMartin = new Customer("Martin", "Scorsese", 123456, 7000, "Missouri", "pablo@mail.com");
-        Customer customerJonas = new Customer("Jonas", "Johnson", 123456, 9000, "Los Angeles", "pablo@mail.com");
+        Customer customerPaul = new Customer("Paul", "Newman", "123456", 9000, "Chicago", "pablo@mail.com");
+        Customer customerMartin = new Customer("Martin", "Scorsese", "123456", 7000, "Missouri", "pablo@mail.com");
+        Customer customerJonas = new Customer("Jonas", "Johnson", "123456", 9000, "Los Angeles", "pablo@mail.com");
 
-        Agent agent1 = new Agent("Drew", "Barrymore", 123456, 20,10);
-        Agent agent2 = new Agent("Kevin", "Hart", 123456, 20,10);
-        Agent agent3 = new Agent("Dwayne", "Johnson", 123456, 20,10);
+        Agent agent1 = new Agent("Drew", "Barrymore", "123456", 20,10);
+        Agent agent2 = new Agent("Kevin", "Hart", "123456", 20,10);
+        Agent agent3 = new Agent("Dwayne", "Johnson", "123456", 20,10);
 
         Apartment apartmentMinimalistic = new Apartment(owner1, "Los Angeles", 5000, 5, true, RentOrBuy.FOR_BUY);
         Apartment apartmentEcologic = new Apartment(owner1, "New York", 4000, 3, true, RentOrBuy.FOR_RENT);
@@ -34,7 +34,7 @@ public class Main {
         Apartment apartmentLuxury = new Apartment(owner3, "Washington", 5500, 4, true, RentOrBuy.FOR_RENT);
         Apartment apartmentSpecial = new Apartment(owner3, "Chicago", 7000, 3, true, RentOrBuy.FOR_BUY);
 
-        Agency agency1 = new Agency("Real Estate Agency", "Evergreen 123", 12345678);
+        Agency agency1 = new Agency("Real Estate Agency", "Evergreen 123", "12345678");
         agency1.addApartment(apartmentMinimalistic, apartmentEcologic, apartmentFuturistic,
                 apartmentRustic, apartmentSimple);
         agency1.addApartment( apartmentFuturistic2, apartmentSimple2,
