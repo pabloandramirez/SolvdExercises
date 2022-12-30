@@ -22,7 +22,7 @@ public final class Agent extends Person {
     }
 
     public void setRentCommission(float rentCommission) {
-        this.rentCommission = rentCommission;
+        this.rentCommission += rentCommission;
     }
 
     public float getSaleCommission() {
@@ -30,7 +30,7 @@ public final class Agent extends Person {
     }
 
     public void setSaleCommission(float saleCommission) {
-        this.saleCommission = saleCommission;
+        this.saleCommission += saleCommission;
     }
 
 

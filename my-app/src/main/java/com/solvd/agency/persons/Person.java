@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import static com.solvd.agency.business.Agency.LOGGER;
 
-abstract class Person implements ICheckStringField, ICheckNumberField {
+public abstract class Person implements ICheckStringField, ICheckNumberField {
     private String firstName;
     private String lastName;
     private String phoneNumber;

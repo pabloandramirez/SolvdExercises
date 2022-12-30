@@ -17,6 +17,10 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
     private String name;
     private String address;
     private String phoneNumber;
+    private int percentageForBuyContract;
+    private int percentageForRentContract;
+    private static int profitsPerBuyContract;
+    private static int profitsPerRentContract;
     private ArrayList<Apartment> apartments = new ArrayList<>();
     private ArrayList<Customer> customers = new ArrayList<>();
     private ArrayList<Agent> agents = new ArrayList<>();
@@ -26,10 +30,12 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
     public static final Logger LOGGER = (Logger) LogManager.getLogger(Agency.class);
 
 
-    public Agency(String name, String address, String phoneNumber) {
+    public Agency(String name, String address, String phoneNumber, int percentageForBuyContract, int percentageForRentContract) {
         setName(name);
         this.address = address;
         setPhoneNumber(phoneNumber);
+        this.percentageForBuyContract = percentageForBuyContract;
+        this.percentageForRentContract = percentageForRentContract;
     }
 
     @Override
@@ -110,7 +116,9 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                 );
                 this.addContract(contract);
                 agent.setSaleCommission((thisApartment.getPrice() * agent.getPercentageSaleCommission()) / 100);
-                this.removeApartment(idApartment);
+                this.findApartmentWithId(idApartment).setOwner(customer);
+                customer.addApartments(this.findApartmentWithId(idApartment));
+                this.findApartmentWithId(idApartment).setAvailable(false);
             }
         } else {
             LOGGER.info("Apartment not available or not for sale");
@@ -140,7 +148,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
                 );
                 this.addContract(contract);
                 agent.setRentCommission((thisApartment.getPrice() * agent.getPercentageRentCommission()) / 100);
-                this.removeApartment(idApartment);
+                this.findApartmentWithId(idApartment).setAvailable(false);
             }
         } else {
             LOGGER.info("Apartment not available or not for sale");
@@ -298,6 +306,22 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
         } catch (NumberFieldException e) {
             LOGGER.warn(e.getMessage(), e);
         }
+    }
+
+    public int getPercentageForBuyContract() {
+        return percentageForBuyContract;
+    }
+
+    public void setPercentageForBuyContract(int percentageForBuyContract) {
+        this.percentageForBuyContract = percentageForBuyContract;
+    }
+
+    public int getPercentageForRentContract() {
+        return percentageForRentContract;
+    }
+
+    public void setPercentageForRentContract(int percentageForRentContract) {
+        this.percentageForRentContract = percentageForRentContract;
     }
 
     @Override

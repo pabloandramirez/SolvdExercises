@@ -3,6 +3,8 @@ package com.solvd.agency.persons;
 
 import com.solvd.agency.business.Apartment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public final class Customer extends Person {
@@ -11,7 +13,7 @@ public final class Customer extends Person {
     private String email;
     private static int idCounter;
     private float amount;
-    private Apartment[] apartments;
+    private ArrayList<Apartment> apartments = new ArrayList<>();
 
 
     public Customer(String firstName, String lastName, String phoneNumber, float amount, String city, String email) {
@@ -24,7 +26,7 @@ public final class Customer extends Person {
 
 
     public void addApartments(Apartment... apartments) {
-        System.arraycopy(apartments, 0, this.apartments, 0, apartments.length);
+        this.apartments.addAll(Arrays.asList(apartments));
     }
 
     public int getIdClient() {

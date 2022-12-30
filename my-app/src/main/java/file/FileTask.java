@@ -23,8 +23,8 @@ public class FileTask {
 
         // Split the string into an array of words
         String[] words = StringUtils.split(text);
-        for (int i = 0; i < words.length; i++) {
-            System.out.println(words[i]);
+        for (String word : words) {
+            System.out.println(word);
         }
 
         // Reverse a word
@@ -46,10 +46,15 @@ public class FileTask {
     }
 
     //Copy the input file to a new location
-    public void copyFile() throws IOException {
-        FileUtils.copyFile(
-                new File("./src/main/resources/txt/input.txt"),
-                new File("./src/main/resources/txt/input-copy.txt"));
+    public void copyFile(){
+        try {
+            FileUtils.copyFile(
+                    new File("./src/main/resources/txt/input.txt"),
+                    new File("./src/main/resources/txt/input-copy.txt"));
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     // Rename the copied file

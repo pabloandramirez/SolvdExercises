@@ -1,6 +1,6 @@
 package com.solvd.agency.business;
 
-import com.solvd.agency.persons.Owner;
+import com.solvd.agency.persons.Person;
 
 import java.util.Objects;
 
@@ -11,14 +11,14 @@ public final class Apartment {
     private int numberRooms;
     private static int idCounter;
     private boolean available;
-    private Owner owner;
+    private Person owner;
     private RentOrBuy rentOrBuy;
 
     private Apartment() {
         this.idApartment = ++Apartment.idCounter;
     }
 
-    public Apartment(Owner owner, String location, float price, int numberRooms, Boolean available, RentOrBuy rentOrBuy) {
+    public Apartment(Person owner, String location, float price, int numberRooms, Boolean available, RentOrBuy rentOrBuy) {
         this();
         this.owner = owner;
         this.location = location;
@@ -65,11 +65,11 @@ public final class Apartment {
         this.available = available;
     }
 
-    public Owner getOwner() {
+    public Person getOwner() {
         return owner;
     }
 
-    public void setOwner(Owner owner) {
+    public void setOwner(Person owner) {
         this.owner = owner;
     }
 

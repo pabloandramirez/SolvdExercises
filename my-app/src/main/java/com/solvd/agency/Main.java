@@ -34,7 +34,7 @@ public class Main {
         Apartment apartmentLuxury = new Apartment(owner3, "Washington", 5500, 4, true, RentOrBuy.FOR_RENT);
         Apartment apartmentSpecial = new Apartment(owner3, "Chicago", 7000, 3, true, RentOrBuy.FOR_BUY);
 
-        Agency agency1 = new Agency("Real Estate Agency", "Evergreen 123", "12345678");
+        Agency agency1 = new Agency("Real Estate Agency", "Evergreen 123", "12345678", 30, 25);
         agency1.addApartment(apartmentMinimalistic, apartmentEcologic, apartmentFuturistic,
                 apartmentRustic, apartmentSimple);
         agency1.addApartment( apartmentFuturistic2, apartmentSimple2,
@@ -66,23 +66,17 @@ public class Main {
         }
 
         agency1.rentSearch(-8, "Chicago", customerMartin);
-
-
         agency1.buySearch(1, "zxfgfsdgsdfg", customerJonas);
-
-
-
 
         agency1.makeBuyContract(customerJonas, 9, agent1);
         agency1.makeRentContract(customerMartin, 3, agent1);
         agency1.makeRentContract(customerMartin, 5, agent1);
 
+        agency1.showApartments();
         agency1.showContracts();
 
         LOGGER.info(agent1.getRentCommission());
         LOGGER.info(agent1.getSaleCommission());
-
-
 
 
     }
