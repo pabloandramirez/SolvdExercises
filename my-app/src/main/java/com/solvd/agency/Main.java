@@ -68,16 +68,19 @@ public class Main {
         agency1.rentSearch(-8, "Chicago", customerMartin);
         agency1.buySearch(1, "zxfgfsdgsdfg", customerJonas);
 
-        agency1.makeBuyContract(customerJonas, 9, agent1);
-        agency1.makeRentContract(customerMartin, 3, agent1);
-        agency1.makeRentContract(customerMartin, 5, agent1);
+        try{
+            agency1.makeBuyContract(customerJonas, 19, agent1);
+            agency1.makeRentContract(customerMartin, 25, agent1);
+            agency1.makeRentContract(customerMartin, 5, agent1);
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage());
+        }
+
 
         agency1.showApartments();
         agency1.showContracts();
 
-        LOGGER.info(agent1.getRentCommission());
-        LOGGER.info(agent1.getSaleCommission());
-
 
     }
+
 }

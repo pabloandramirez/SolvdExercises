@@ -10,11 +10,16 @@ import java.util.regex.Pattern;
 
 public class FileTask {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         // Read a file into a string
-        String text = FileUtils.readFileToString(
-                new File("./src/main/resources/javaText.txt"), "UTF-8");
+        String text = null;
+        try {
+            text = FileUtils.readFileToString(
+                    new File("./src/main/resources/javaText.txt"), "UTF-8");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println(text);
 
         // Remove whitespace from text
