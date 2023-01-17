@@ -1,10 +1,12 @@
 package com.solvd.agency.business;
 
 import com.solvd.agency.persons.Person;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
-public final class Apartment {
+public final class Apartment{
     private final int idApartment;
     private String location;
     private float price;
@@ -17,15 +19,16 @@ public final class Apartment {
     private Apartment() {
         this.idApartment = ++Apartment.idCounter;
     }
+    private static final Logger LOGGER = LogManager.getLogger(Agency.class);
 
     public Apartment(Person owner, String location, float price, int numberRooms, Boolean available, RentOrBuy rentOrBuy) {
         this();
-        this.owner = owner;
         this.location = location;
         this.price = price;
         this.numberRooms = numberRooms;
         this.available = available;
         this.rentOrBuy = rentOrBuy;
+        this.owner = owner;
     }
 
     public int getIdApartment() {
@@ -107,4 +110,5 @@ public final class Apartment {
     public int hashCode() {
         return Objects.hash(idApartment, location, price, numberRooms, available, owner, rentOrBuy);
     }
+
 }

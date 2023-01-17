@@ -1,12 +1,14 @@
 package com.solvd.agency.utils;
 
 
-import static com.solvd.agency.business.Agency.LOGGER;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CustomLinkedList<T> {
 
     private Node<T> head;
     private int size;
+    private static final Logger LOGGER = LogManager.getLogger(CustomLinkedList.class);
 
 
 

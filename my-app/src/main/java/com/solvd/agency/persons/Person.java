@@ -1,23 +1,34 @@
 package com.solvd.agency.persons;
 
+import com.solvd.agency.exceptions.NullFieldException;
 import com.solvd.agency.exceptions.NumberFieldException;
 import com.solvd.agency.exceptions.StringFieldException;
+import com.solvd.agency.interfaces.ICheckField;
 import com.solvd.agency.interfaces.ICheckNumberField;
 import com.solvd.agency.interfaces.ICheckStringField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
-import static com.solvd.agency.business.Agency.LOGGER;
 
-public abstract class Person implements ICheckStringField, ICheckNumberField {
+public abstract class Person implements ICheckStringField, ICheckNumberField, ICheckField {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    private static final Logger LOGGER = LogManager.getLogger(Person.class);
+
 
     public Person(String firstName, String lastName, String phoneNumber) {
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNumber(phoneNumber);
+        try {
+            setFirstName(firstName);
+            setLastName(lastName);
+            setPhoneNumber(phoneNumber);
+            checkNoNullsFields();
+        } catch (NullFieldException e){
+            LOGGER.warn(e.getMessage());
+        }
+
     }
 
     public String getFirstName() {
@@ -68,6 +79,13 @@ public abstract class Person implements ICheckStringField, ICheckNumberField {
     }
 
     @Override
+    public void checkNoNullsFields(){
+        if (Objects.isNull(this.firstName)||Objects.isNull(this.lastName)||Objects.isNull(this.phoneNumber)){
+            throw new NullFieldException();
+        }
+    }
+
+    @Override
     public void checkStringField(String field) {
         if (field.chars().anyMatch(Character::isDigit)) {
             throw new StringFieldException();
@@ -89,7 +107,7 @@ public abstract class Person implements ICheckStringField, ICheckNumberField {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return phoneNumber == person.phoneNumber && firstName.equals(person.firstName) && lastName.equals(person.lastName);
+        return Objects.equals(phoneNumber, person.phoneNumber) && firstName.equals(person.firstName) && lastName.equals(person.lastName);
     }
 
     @Override

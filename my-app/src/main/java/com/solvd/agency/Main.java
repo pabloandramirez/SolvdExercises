@@ -6,10 +6,12 @@ import com.solvd.agency.business.RentOrBuy;
 import com.solvd.agency.persons.Agent;
 import com.solvd.agency.persons.Customer;
 import com.solvd.agency.persons.Owner;
-
-import static com.solvd.agency.business.Agency.LOGGER;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main {
+
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
         Owner owner1 = new Owner("asff5", "fsar666", "fsff");

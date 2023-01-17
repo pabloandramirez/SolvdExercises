@@ -14,7 +14,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 
 
-public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRentContract, IGetApartment, ICheckNumberField, ICheckStringField {
+public final class Agency implements IBuySearch, IRentSearch, IBuyContract,
+        IRentContract, IGetApartment, ICheckNumberField, ICheckStringField {
     private String name;
     private String address;
     private String phoneNumber;
@@ -28,7 +29,8 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
     private ArrayList<Owner> owners = new ArrayList<>();
     private CustomLinkedList<Contract> contracts = new CustomLinkedList<>();
 
-    public static final Logger LOGGER = (Logger) LogManager.getLogger(Agency.class);
+    private static final Logger LOGGER = LogManager.getLogger(Agency.class);
+    private Scanner input = new Scanner(System.in);
 
 
     public Agency(String name, String address, String phoneNumber, int percentageForBuyContract, int percentageForRentContract) {
@@ -242,7 +244,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
 
     public void addContract(Contract... contracts) {
         for (Contract contract:
-             contracts) {
+                contracts) {
             this.contracts.insert(contract);
         }
     }
@@ -273,27 +275,19 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
     }
 
     public void showApartments() {
-        for (Apartment apartment : apartments) {
-            LOGGER.info(apartment + " ");
-        }
+        apartments.forEach(apartment -> LOGGER.info(apartment.toString()));
     }
 
     public void showCustomers() {
-        for (Customer customer : customers) {
-            LOGGER.info(customer + " ");
-        }
+        customers.forEach(customer -> LOGGER.info(customer.toString()));
     }
 
     public void showOwners() {
-        for (Owner owner : owners) {
-            LOGGER.info(owner + " ");
-        }
+        owners.forEach(owner -> LOGGER.info(owner.toString()));
     }
 
     public void showAgents() {
-        for (Agent agent : agents) {
-            LOGGER.info(agent + " ");
-        }
+        agents.forEach(agent -> LOGGER.info(agent.toString()));
     }
 
     public void showContracts() {
@@ -386,4 +380,5 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract, IRen
             throw new StringFieldException();
         }
     }
+
 }

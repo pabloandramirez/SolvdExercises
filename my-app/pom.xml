@@ -50,7 +50,7 @@
   <distributionManagement>
     <repository>
       <uniqueVersion>false</uniqueVersion>
-      <id>corp1</id>
+      <id>deploymentRepo</id>
       <name>Corporate Repository</name>
       <url>scp://repo/maven2</url>
       <layout>default</layout>
