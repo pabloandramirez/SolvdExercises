@@ -1,8 +1,6 @@
 package com.solvd.agency;
 
-import com.solvd.agency.business.Agency;
-import com.solvd.agency.business.Apartment;
-import com.solvd.agency.business.RentOrBuy;
+import com.solvd.agency.business.*;
 import com.solvd.agency.persons.Agent;
 import com.solvd.agency.persons.Customer;
 import com.solvd.agency.persons.Owner;
@@ -18,23 +16,23 @@ public class Main {
         Owner owner2 = new Owner("Meryl", "Streep", "2345678");
         Owner owner3 = new Owner("Jason", "Momoa", "3456789");
 
-        Customer customerPaul = new Customer("Paul", "Newman", "123456", 9000, "Chicago", "pablo@mail.com");
-        Customer customerMartin = new Customer("Martin", "Scorsese", "123456", 7000, "Missouri", "pablo@mail.com");
-        Customer customerJonas = new Customer("Jonas", "Johnson", "123456", 9000, "Los Angeles", "pablo@mail.com");
+        Customer customerPaul = new Customer("Paul", "Newman", "123456", Currency.U$S,9000, "Chicago", "pablo@mail.com");
+        Customer customerMartin = new Customer("Martin", "Scorsese", "123456", Currency.E€U, 7000, "Missouri", "pablo@mail.com");
+        Customer customerJonas = new Customer("Jonas", "Johnson", "123456", Currency.U$S, 9000, "Los Angeles", "pablo@mail.com");
 
         Agent agent1 = new Agent("Drew", "Barrymore", "123456", 20,10);
         Agent agent2 = new Agent("Kevin", "Hart", "123456", 20,10);
         Agent agent3 = new Agent("Dwayne", "Johnson", "123456", 20,10);
 
-        Apartment apartmentMinimalistic = new Apartment(owner1, "Los Angeles", 5000, 5, true, RentOrBuy.FOR_BUY);
-        Apartment apartmentEcologic = new Apartment(owner1, "New York", 4000, 3, true, RentOrBuy.FOR_RENT);
-        Apartment apartmentFuturistic = new Apartment(owner1, "Chicago", 3500, 3, true, RentOrBuy.FOR_RENT);
-        Apartment apartmentRustic = new Apartment(owner2, "Los Angeles", 1500, 1, true, RentOrBuy.FOR_BUY);
-        Apartment apartmentSimple = new Apartment(owner2, "Chicago", 2000, 3, true, RentOrBuy.FOR_RENT);
-        Apartment apartmentFuturistic2 = new Apartment(owner2, "Santa Cruz", 6000, 4, true, RentOrBuy.FOR_RENT);
-        Apartment apartmentSimple2 = new Apartment(owner3, "New Jersey", 3500, 2, true, RentOrBuy.FOR_BUY);
-        Apartment apartmentLuxury = new Apartment(owner3, "Washington", 5500, 4, true, RentOrBuy.FOR_RENT);
-        Apartment apartmentSpecial = new Apartment(owner3, "Chicago", 7000, 3, true, RentOrBuy.FOR_BUY);
+        Apartment apartmentMinimalistic = new Apartment(owner1, Cities.FLORIDA, Currency.U$S, 5000, 5, true, RentOrBuy.FOR_BUY);
+        Apartment apartmentEcologic = new Apartment(owner1, Cities.BARCELONA, Currency.E€U,4000, 3, true, RentOrBuy.FOR_RENT);
+        Apartment apartmentFuturistic = new Apartment(owner1, Cities.FLORIDA, Currency.U$S, 3500, 3, true, RentOrBuy.FOR_RENT);
+        Apartment apartmentRustic = new Apartment(owner2, Cities.WASHINGTON, Currency.U$S,1500, 1, true, RentOrBuy.FOR_BUY);
+        Apartment apartmentSimple = new Apartment(owner2, Cities.PARIS, Currency.U$S,2000, 3, true, RentOrBuy.FOR_RENT);
+        Apartment apartmentFuturistic2 = new Apartment(owner2, Cities.NEW_JORK, Currency.U$S,6000, 4, true, RentOrBuy.FOR_RENT);
+        Apartment apartmentSimple2 = new Apartment(owner3, Cities.ROME, Currency.U$S,3500, 2, true, RentOrBuy.FOR_BUY);
+        Apartment apartmentLuxury = new Apartment(owner3, Cities.BARCELONA, Currency.U$S,5500, 4, true, RentOrBuy.FOR_RENT);
+        Apartment apartmentSpecial = new Apartment(owner3, Cities.NEW_JORK, Currency.U$S,7000, 3, true, RentOrBuy.FOR_BUY);
 
         Agency agency1 = new Agency("Real Estate Agency", "Evergreen 123", "12345678", 30, 25);
         agency1.addApartment(apartmentMinimalistic, apartmentEcologic, apartmentFuturistic,
@@ -67,13 +65,13 @@ public class Main {
             LOGGER.info("Objects with different hash code");
         }
 
-        agency1.rentSearch(-8, "Chicago", customerMartin);
-        agency1.buySearch(1, "zxfgfsdgsdfg", customerJonas);
+        agency1.rentSearch(4, Cities.WASHINGTON, customerMartin);
+        agency1.buySearch(1, Cities.NEW_JORK, customerJonas);
 
         try{
-            agency1.makeBuyContract(customerJonas, 19, agent1);
-            agency1.makeRentContract(customerMartin, 25, agent1);
-            agency1.makeRentContract(customerMartin, 5, agent1);
+            agency1.makeBuyContract(customerJonas, 19, agent1, PaymentMethods.CASH);
+            agency1.makeRentContract(customerMartin, 25, agent1, PaymentMethods.CASH);
+            agency1.makeRentContract(customerMartin, 5, agent1, PaymentMethods.TRANSFER);
         } catch (Exception e){
             LOGGER.warn(e.getMessage());
         }

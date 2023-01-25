@@ -2,6 +2,9 @@ package com.solvd.agency.persons;
 
 
 import com.solvd.agency.business.Apartment;
+import com.solvd.agency.business.Currency;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,13 +15,16 @@ public final class Customer extends Person {
     private String city;
     private String email;
     private static int idCounter;
+    private Currency currency;
     private float amount;
     private ArrayList<Apartment> apartments = new ArrayList<>();
+    private static final Logger LOGGER = LogManager.getLogger(Customer.class);
 
 
-    public Customer(String firstName, String lastName, String phoneNumber, float amount, String city, String email) {
+    public Customer(String firstName, String lastName, String phoneNumber, Currency currency, float amount, String city, String email) {
         super(firstName, lastName, phoneNumber);
         this.idClient = ++Customer.idCounter;
+        this.currency = currency;
         this.amount = amount;
         this.city = city;
         this.email = email;
@@ -29,8 +35,20 @@ public final class Customer extends Person {
         this.apartments.addAll(Arrays.asList(apartments));
     }
 
+    public void showApartments(){
+        this.apartments.forEach(apartment -> LOGGER.info(apartment.toString()));
+    }
+
     public int getIdClient() {
         return idClient;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
     public float getAmount() {

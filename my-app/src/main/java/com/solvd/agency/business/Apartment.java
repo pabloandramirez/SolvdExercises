@@ -8,7 +8,8 @@ import java.util.Objects;
 
 public final class Apartment{
     private final int idApartment;
-    private String location;
+    private Cities location;
+    private Currency currency;
     private float price;
     private int numberRooms;
     private static int idCounter;
@@ -21,9 +22,10 @@ public final class Apartment{
     }
     private static final Logger LOGGER = LogManager.getLogger(Agency.class);
 
-    public Apartment(Person owner, String location, float price, int numberRooms, Boolean available, RentOrBuy rentOrBuy) {
+    public Apartment(Person owner, Cities location, Currency currency, float price, int numberRooms, Boolean available, RentOrBuy rentOrBuy) {
         this();
         this.location = location;
+        this.currency = currency;
         this.price = price;
         this.numberRooms = numberRooms;
         this.available = available;
@@ -36,12 +38,20 @@ public final class Apartment{
     }
 
 
-    public String getLocation() {
-        return location.toLowerCase();
+    public Cities getLocation() {
+        return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Cities location) {
         this.location = location;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
     public float getPrice() {

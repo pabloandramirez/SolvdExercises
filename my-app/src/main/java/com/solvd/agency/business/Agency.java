@@ -53,10 +53,10 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract,
     }
 
     @Override
-    public ArrayList<Apartment> findApartmentWithLocation(String location) {
+    public ArrayList<Apartment> findApartmentWithLocation(Cities location) {
         ArrayList<Apartment> apartmentsFound = new ArrayList<>();
         for (Apartment apartment : this.apartments) {
-            if (location.toLowerCase().equals(apartment.getLocation())) {
+            if (location==apartment.getLocation()) {
                 apartmentsFound.add(apartment);
             }
         }
@@ -64,14 +64,6 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract,
             throw new LocationException();
         }
         return apartmentsFound;
-    }
-
-    public boolean apartmentFound(String location, Apartment apartment) {
-        boolean apartmentFound = location.toLowerCase().equals(apartment.getLocation());
-        if (!apartmentFound) {
-            throw new LocationException();
-        }
-        return apartmentFound;
     }
 
     public boolean numberRooms(int rooms, int apartmentRooms) {
@@ -86,16 +78,26 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract,
         return match;
     }
 
-    public boolean compareAmount(float amount, float apartmentPrice) {
+    public boolean compareAmount(float amount, Apartment apartment, Customer customer) {
         boolean compare = false;
         if (amount < 0) {
             throw new AmountException();
         } else {
-            if (amount >= apartmentPrice) {
+            if (amount >= checkCurrencyForCustomer(apartment, customer)) {
                 compare = true;
             }
         }
         return compare;
+    }
+
+    public double checkCurrencyForCustomer(Apartment apartment, Customer customer){
+        double priceOfApartment;
+        if (apartment.getCurrency()==customer.getCurrency()){
+            priceOfApartment = apartment.getPrice();
+        } else {
+            priceOfApartment = Currency.convertCurrency(apartment, customer);
+        }
+        return priceOfApartment;
     }
 
     public boolean existsApartment(int idApartment, ArrayList<Apartment> apartments){
@@ -114,32 +116,33 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract,
     }
 
     @Override
-    public void makeBuyContract(Customer customer, int idApartment, Agent agent) throws RoomException,
+    public void makeBuyContract(Customer customer, int idApartment, Agent agent, PaymentMethods method) throws RoomException,
             AmountException, WrongIdApartmentException {
         Apartment thisApartment = this.findApartmentWithId(idApartment);
         if (existsApartment(idApartment, this.getApartments())){
-            if (thisApartment.getAvailable() && thisApartment.getRentOrBuy() == IBuyContract.TYPE_OF_CONTRACT) {
-                if (this.compareAmount(customer.getAmount(), thisApartment.getPrice())) {
-                    Contract contract = new Contract(thisApartment.getIdApartment(),
-                            thisApartment.getOwner().getFirstName() + " " + thisApartment.getOwner().getLastName(),
-                            agent.getFirstName() + " " + agent.getLastName(), agent.getIdAgent(),
-                            customer.getFirstName() + " " + customer.getLastName(), customer.getIdClient());
-                    LOGGER.info("Customer " + customer.getFirstName() + " " + customer.getLastName()
-                            + " ID: " + customer.getIdClient()
-                            + " bought the apartment ID " + thisApartment.getIdApartment()
-                            + " to the owner " + thisApartment.getOwner()
-                            + ", throw the agent " + agent.getFirstName()
-                            + " " + agent.getLastName()
-                            + " ID: " + agent.getIdAgent()
-                            + " Contract ID: " + contract.getIdContract()
-                            + " Date of the Contract: " + contract.getDateOfContract()
-                    );
-                    this.addContract(contract);
-                    agent.setSaleCommission((thisApartment.getPrice() * agent.getPercentageSaleCommission()) / 100);
-                    this.findApartmentWithId(idApartment).setOwner(customer);
-                    customer.addApartments(this.findApartmentWithId(idApartment));
-                    this.findApartmentWithId(idApartment).setAvailable(false);
-                }
+            if (thisApartment.getAvailable()
+                    && thisApartment.getRentOrBuy() == IBuyContract.TYPE_OF_CONTRACT
+                    && this.compareAmount(customer.getAmount(),this.findApartmentWithId(idApartment),customer)) {
+                Contract contract = new Contract(thisApartment.getIdApartment(),
+                        thisApartment.getOwner().getFirstName() + " " + thisApartment.getOwner().getLastName(),
+                        agent.getFirstName() + " " + agent.getLastName(), agent.getIdAgent(),
+                        customer.getFirstName() + " " + customer.getLastName(), customer.getIdClient());
+                LOGGER.info("Customer " + customer.getFirstName() + " " + customer.getLastName()
+                        + " ID: " + customer.getIdClient()
+                        + " bought the apartment ID " + thisApartment.getIdApartment()
+                        + " to the owner " + thisApartment.getOwner()
+                        + ", throw the agent " + agent.getFirstName()
+                        + " " + agent.getLastName()
+                        + " ID: " + agent.getIdAgent()
+                        + " Contract ID: " + contract.getIdContract()
+                        + " Date of the Contract: " + contract.getDateOfContract()
+                        + " Payment method: " + method
+                );
+                this.addContract(contract);
+                agent.setSaleCommission((thisApartment.getPrice() * agent.getPercentageSaleCommission()) / 100);
+                this.findApartmentWithId(idApartment).setOwner(customer);
+                customer.addApartments(this.findApartmentWithId(idApartment));
+                this.findApartmentWithId(idApartment).setAvailable(false);
             } else {
                 LOGGER.info("Apartment not available or not for sale");
             }
@@ -149,32 +152,32 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract,
     }
 
     @Override
-    public void makeRentContract(Customer customer, int idApartment, Agent agent) throws RoomException,
+    public void makeRentContract(Customer customer, int idApartment, Agent agent, PaymentMethods method) throws RoomException,
             AmountException, WrongIdApartmentException {
         Apartment thisApartment = this.findApartmentWithId(idApartment);
         if (existsApartment(idApartment, this.getApartments())){
-            if (thisApartment.getAvailable() &&
-                    thisApartment.getRentOrBuy() == IRentContract.TYPE_OF_CONTRACT) {
-                if (this.compareAmount(customer.getAmount(), thisApartment.getPrice())) {
-                    Contract contract = new Contract(thisApartment.getIdApartment(),
-                            thisApartment.getOwner().getFirstName() + " " + thisApartment.getOwner().getLastName(),
-                            agent.getFirstName() + " " + agent.getLastName(), agent.getIdAgent(),
-                            customer.getFirstName() + " " + customer.getLastName(), customer.getIdClient());
-                    LOGGER.info("Customer " + customer.getFirstName() + " " + customer.getLastName()
-                            + " ID: " + customer.getIdClient()
-                            + " rented the apartment ID " + thisApartment.getIdApartment()
-                            + " to the owner " + thisApartment.getOwner().getFirstName()
-                            + " " + thisApartment.getOwner().getLastName()
-                            + ", throw the agent " + agent.getFirstName()
-                            + " " + agent.getLastName()
-                            + " ID: " + agent.getIdAgent()
-                            + " Contract ID: " + contract.getIdContract()
-                            + " Date of the Contract: " + contract.getDateOfContract()
-                    );
-                    this.addContract(contract);
-                    agent.setRentCommission((thisApartment.getPrice() * agent.getPercentageRentCommission()) / 100);
-                    this.findApartmentWithId(idApartment).setAvailable(false);
-                }
+            if (thisApartment.getAvailable()
+                    && thisApartment.getRentOrBuy() == IRentContract.TYPE_OF_CONTRACT
+                    && this.compareAmount(customer.getAmount(),this.findApartmentWithId(idApartment),customer)) {
+                Contract contract = new Contract(thisApartment.getIdApartment(),
+                        thisApartment.getOwner().getFirstName() + " " + thisApartment.getOwner().getLastName(),
+                        agent.getFirstName() + " " + agent.getLastName(), agent.getIdAgent(),
+                        customer.getFirstName() + " " + customer.getLastName(), customer.getIdClient());
+                LOGGER.info("Customer " + customer.getFirstName() + " " + customer.getLastName()
+                        + " ID: " + customer.getIdClient()
+                        + " rented the apartment ID " + thisApartment.getIdApartment()
+                        + " to the owner " + thisApartment.getOwner().getFirstName()
+                        + " " + thisApartment.getOwner().getLastName()
+                        + ", throw the agent " + agent.getFirstName()
+                        + " " + agent.getLastName()
+                        + " ID: " + agent.getIdAgent()
+                        + " Contract ID: " + contract.getIdContract()
+                        + " Date of the Contract: " + contract.getDateOfContract()
+                        + " Payment method: " + method
+                );
+                this.addContract(contract);
+                agent.setRentCommission((thisApartment.getPrice() * agent.getPercentageRentCommission()) / 100);
+                this.findApartmentWithId(idApartment).setAvailable(false);
             } else {
                 LOGGER.info("Apartment not available or not for sale");
             }
@@ -184,23 +187,18 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract,
     }
 
     @Override
-    public void buySearch(int rooms, String location, Customer customer) {
+    public ArrayList<Apartment>  buySearch(int rooms, Cities location, Customer customer) {
+        ArrayList<Apartment> apartmentsFound = new ArrayList<>();
         int o = 1;
         try {
             int i = 0;
             for (Apartment apartment : this.apartments) {
-                if (apartment.getAvailable()) {
-                    if (this.numberRooms(rooms, apartment.getNumberRooms())) {
-                        if (this.compareAmount(customer.getAmount(), apartment.getPrice())) {
-                            if (this.apartmentFound(location, apartment)) {
-                                if (apartment.getRentOrBuy() == RentOrBuy.FOR_BUY) {
-                                    LOGGER.info("Coincidence for buy " + (o++));
-                                    LOGGER.info(apartment);
-                                    i++;
-                                }
-                            }
-                        }
-                    }
+                if (apartment.getAvailable()&&this.numberRooms(rooms, apartment.getNumberRooms())
+                    && this.compareAmount(customer.getAmount(),apartment,customer)
+                    && apartment.getRentOrBuy() == RentOrBuy.FOR_BUY) {
+                        LOGGER.info("Coincidence for buy " + (o++) + ": " + apartment);
+                        i++;
+                        apartmentsFound.add(apartment);
                 }
             }
             if (i == 0) {
@@ -210,27 +208,23 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract,
         } catch (RoomException | AmountException | LocationException e) {
             LOGGER.warn(e.getMessage());
         }
-
+        return apartmentsFound;
     }
 
     @Override
-    public void rentSearch(int rooms, String location, Customer customer) {
+    public ArrayList<Apartment> rentSearch(int rooms, Cities location, Customer customer) {
+        ArrayList<Apartment> apartmentsFound = new ArrayList<>();
         int o = 1;
         try {
             int i = 0;
             for (Apartment apartment : this.apartments) {
-                if (apartment.getAvailable()) {
-                    if (this.numberRooms(rooms, apartment.getNumberRooms())) {
-                        if (this.compareAmount(customer.getAmount(), apartment.getPrice())) {
-                            if (this.apartmentFound(location, apartment)) {
-                                if (apartment.getRentOrBuy() == RentOrBuy.FOR_RENT) {
-                                    LOGGER.info("Coincidence for rent " + (o++));
-                                    LOGGER.info(apartment);
-                                    i++;
-                                }
-                            }
-                        }
-                    }
+                if (apartment.getAvailable()&&this.numberRooms(rooms, apartment.getNumberRooms())
+                        && this.compareAmount(customer.getAmount(),apartment,customer)
+                        &&apartment.getRentOrBuy() == RentOrBuy.FOR_BUY) {
+                    LOGGER.info("Coincidence for rent " + (o++));
+                    LOGGER.info(apartment);
+                    i++;
+                    apartmentsFound.add(apartment);
                 }
             }
             if (i == 0) {
@@ -240,6 +234,7 @@ public final class Agency implements IBuySearch, IRentSearch, IBuyContract,
         } catch (RoomException | AmountException | LocationException e) {
             LOGGER.warn(e.getMessage());
         }
+        return apartmentsFound;
     }
 
     public void addContract(Contract... contracts) {
