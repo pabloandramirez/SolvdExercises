@@ -79,8 +79,8 @@ public abstract class Person implements ICheckStringField, ICheckNumberField, IC
     }
 
     @Override
-    public void checkNoNullsFields(){
-        if (Objects.isNull(this.firstName)||Objects.isNull(this.lastName)||Objects.isNull(this.phoneNumber)){
+    public void checkNoNullsFields() {
+        if (Objects.isNull(this.getFirstName()) || Objects.isNull(this.getLastName()) || Objects.isNull(this.getPhoneNumber())) {
             throw new NullFieldException();
         }
     }

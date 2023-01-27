@@ -17,17 +17,19 @@ public final class Customer extends Person {
     private static int idCounter;
     private Currency currency;
     private float amount;
+    private int numberOfRooms;
     private ArrayList<Apartment> apartments = new ArrayList<>();
     private static final Logger LOGGER = LogManager.getLogger(Customer.class);
 
 
-    public Customer(String firstName, String lastName, String phoneNumber, Currency currency, float amount, String city, String email) {
+    public Customer(String firstName, String lastName, String phoneNumber, Currency currency, float amount, String city, String email, int numberOfRooms) {
         super(firstName, lastName, phoneNumber);
         this.idClient = ++Customer.idCounter;
         this.currency = currency;
         this.amount = amount;
         this.city = city;
         this.email = email;
+        this.numberOfRooms = numberOfRooms;
     }
 
 
@@ -73,6 +75,14 @@ public final class Customer extends Person {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public int getNumberOfRooms() {
+        return numberOfRooms;
+    }
+
+    public void setNumberOfRooms(int numberOfRooms) {
+        this.numberOfRooms = numberOfRooms;
     }
 
     @Override

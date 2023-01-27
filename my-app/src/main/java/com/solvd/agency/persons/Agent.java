@@ -9,6 +9,8 @@ public final class Agent extends Person {
     private static int idCounter;
     private float percentageSaleCommission;
     private float percentageRentCommission;
+    private int rentContractsCounter;
+    private int saleContractsCounter;
 
     public Agent(String firstName, String lastName, String phoneNumber, float percentageSaleCommission, float percentageRentCommission) {
         super(firstName, lastName, phoneNumber);
@@ -54,6 +56,22 @@ public final class Agent extends Person {
         this.percentageRentCommission = percentageRentCommission;
     }
 
+    public int getRentContractsCounter() {
+        return rentContractsCounter;
+    }
+
+    public void setRentContractsCounter() {
+        this.rentContractsCounter++;
+    }
+
+    public int getSaleContractsCounter() {
+        return saleContractsCounter;
+    }
+
+    public void setSaleContractsCounter() {
+        this.saleContractsCounter++;
+    }
+
     @Override
     public String toString() {
         return "Agent{" +
@@ -62,6 +80,8 @@ public final class Agent extends Person {
                 ", percentageRentCommission=" + percentageRentCommission +
                 ", saleCommission=" + saleCommission +
                 ", rentCommission=" + rentCommission +
+                ", rent contracts=" + rentContractsCounter +
+                ", sale contracts=" + saleContractsCounter +
                 ", person=" + super.toString() +
                 '}';
     }

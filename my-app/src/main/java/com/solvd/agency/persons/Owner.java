@@ -13,6 +13,7 @@ public final class Owner extends Person {
     private final int idOwner;
     private static int idCounter;
     private ArrayList<Apartment> apartments = new ArrayList<>();
+    private double profitsPerApartmentsSold;
     private static final Logger LOGGER = LogManager.getLogger(Owner.class);
 
     public Owner(String firstName, String lastName, String phoneNumber) {
@@ -30,6 +31,14 @@ public final class Owner extends Person {
 
     public int getIdOwner() {
         return idOwner;
+    }
+
+    public double getProfitsPerApartmentsSold() {
+        return profitsPerApartmentsSold;
+    }
+
+    public void setProfitsPerApartmentsSold(double profitsPerApartmentsSold) {
+        this.profitsPerApartmentsSold = profitsPerApartmentsSold;
     }
 
     @Override

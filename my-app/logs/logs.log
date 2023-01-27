@@ -2005,3 +2005,113 @@
 2023-01-25 11:17:57.949 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=9, location='NEW_JORK', price=7000.0, numberRooms=3, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789}
 2023-01-25 11:17:57.949 [main] INFO  com.solvd.agency.utils.CustomLinkedList - List is empty
 2023-01-25 11:17:57.949 [main] INFO  com.solvd.agency.business.Agency - 
+2023-01-25 12:57:07.598 [main] WARN  com.solvd.agency.persons.Person - The field must contain only letters
+2023-01-25 12:57:07.602 [main] WARN  com.solvd.agency.persons.Person - The field must contain only letters
+2023-01-25 12:57:07.602 [main] WARN  com.solvd.agency.persons.Person - The field must contain only numbers
+2023-01-25 12:57:07.602 [main] WARN  com.solvd.agency.persons.Person - The field/s can not be null/s
+2023-01-25 12:57:07.624 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=1, location='FLORIDA', price=5000.0, numberRooms=5, available=true, for rent or for buy=FOR_BUY, owner=null null, owner contact=null}
+2023-01-25 12:57:07.624 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=2, location='BARCELONA', price=4000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=null null, owner contact=null}
+2023-01-25 12:57:07.624 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=3, location='FLORIDA', price=3500.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=null null, owner contact=null}
+2023-01-25 12:57:07.625 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=4, location='WASHINGTON', price=1500.0, numberRooms=1, available=true, for rent or for buy=FOR_BUY, owner=Meryl Streep, owner contact=2345678}
+2023-01-25 12:57:07.625 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=5, location='PARIS', price=2000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678}
+2023-01-25 12:57:07.625 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=6, location='NEW_JORK', price=6000.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678}
+2023-01-25 12:57:07.625 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=7, location='ROME', price=3500.0, numberRooms=2, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789}
+2023-01-25 12:57:07.625 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=8, location='BARCELONA', price=5500.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Jason Momoa, owner contact=3456789}
+2023-01-25 12:57:07.626 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=9, location='NEW_JORK', price=7000.0, numberRooms=3, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789}
+2023-01-25 12:57:07.626 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=1, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Drew', lastName='Barrymore', phoneNumber=123456}}
+2023-01-25 12:57:07.627 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=2, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Kevin', lastName='Hart', phoneNumber=123456}}
+2023-01-25 12:57:07.627 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=3, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Dwayne', lastName='Johnson', phoneNumber=123456}}
+2023-01-25 12:57:07.627 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=3, city='Los Angeles', email='pablo@mail.com', person=Person{firstName='Jonas', lastName='Johnson', phoneNumber=123456}}
+2023-01-25 12:57:07.628 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=2, city='Missouri', email='pablo@mail.com', person=Person{firstName='Martin', lastName='Scorsese', phoneNumber=123456}}
+2023-01-25 12:57:07.628 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=1, city='Chicago', email='pablo@mail.com', person=Person{firstName='Paul', lastName='Newman', phoneNumber=123456}}
+2023-01-25 12:57:07.628 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=1, person=Person{firstName='null', lastName='null', phoneNumber=null}}
+2023-01-25 12:57:07.629 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=2, person=Person{firstName='Meryl', lastName='Streep', phoneNumber=2345678}}
+2023-01-25 12:57:07.629 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}}
+2023-01-25 12:57:07.629 [main] INFO  com.solvd.agency.Main - Not same memory space reference
+2023-01-25 12:57:07.629 [main] INFO  com.solvd.agency.Main - Objects with different content
+2023-01-25 12:57:07.630 [main] INFO  com.solvd.agency.Main - Objects with different hash code
+2023-01-25 12:57:07.630 [main] INFO  com.solvd.agency.business.Agency - There is no apartments for rent available with this number of rooms, location or amount
+2023-01-25 12:57:07.630 [main] INFO  com.solvd.agency.business.Agency - Coincidence for buy 1: Apartment{idApartment=4, location='WASHINGTON', price=1500.0, numberRooms=1, available=true, for rent or for buy=FOR_BUY, owner=Meryl Streep, owner contact=2345678}
+2023-01-25 12:57:07.633 [main] WARN  com.solvd.agency.Main - The ID of apartment does not exists
+2023-01-25 12:57:07.633 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=1, location='FLORIDA', price=5000.0, numberRooms=5, available=true, for rent or for buy=FOR_BUY, owner=null null, owner contact=null}
+2023-01-25 12:57:07.633 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=2, location='BARCELONA', price=4000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=null null, owner contact=null}
+2023-01-25 12:57:07.633 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=3, location='FLORIDA', price=3500.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=null null, owner contact=null}
+2023-01-25 12:57:07.633 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=4, location='WASHINGTON', price=1500.0, numberRooms=1, available=true, for rent or for buy=FOR_BUY, owner=Meryl Streep, owner contact=2345678}
+2023-01-25 12:57:07.633 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=5, location='PARIS', price=2000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678}
+2023-01-25 12:57:07.633 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=6, location='NEW_JORK', price=6000.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678}
+2023-01-25 12:57:07.634 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=7, location='ROME', price=3500.0, numberRooms=2, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789}
+2023-01-25 12:57:07.634 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=8, location='BARCELONA', price=5500.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Jason Momoa, owner contact=3456789}
+2023-01-25 12:57:07.634 [main] INFO  com.solvd.agency.business.Agency - Apartment{idApartment=9, location='NEW_JORK', price=7000.0, numberRooms=3, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789}
+2023-01-25 12:57:07.634 [main] INFO  com.solvd.agency.utils.CustomLinkedList - List is empty
+2023-01-25 12:57:07.634 [main] INFO  com.solvd.agency.business.Agency - 
+2023-01-27 06:24:34.860 [main] WARN  com.solvd.agency.persons.Person - The field must contain only numbers
+2023-01-27 06:24:34.865 [main] WARN  com.solvd.agency.persons.Person - The field/s can not be null/s
+2023-01-27 06:24:34.879 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=1, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Drew', lastName='Barrymore', phoneNumber=123456}}
+2023-01-27 06:24:34.879 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=2, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Kevin', lastName='Hart', phoneNumber=123456}}
+2023-01-27 06:24:34.879 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=3, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Dwayne', lastName='Johnson', phoneNumber=123456}}
+2023-01-27 06:24:34.880 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=3, city='Los Angeles', email='pablo@mail.com', person=Person{firstName='Jonas', lastName='Johnson', phoneNumber=123456}}
+2023-01-27 06:24:34.881 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=2, city='Missouri', email='pablo@mail.com', person=Person{firstName='Martin', lastName='Scorsese', phoneNumber=123456}}
+2023-01-27 06:24:34.881 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=1, city='Chicago', email='pablo@mail.com', person=Person{firstName='Paul', lastName='Newman', phoneNumber=123456}}
+2023-01-27 06:24:34.881 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=1, person=Person{firstName='Paul', lastName='Walker', phoneNumber=null}}
+2023-01-27 06:24:34.882 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=2, person=Person{firstName='Meryl', lastName='Streep', phoneNumber=2345678}}
+2023-01-27 06:24:34.882 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}}
+2023-01-27 06:24:34.882 [main] INFO  com.solvd.agency.Main - Not same memory space reference
+2023-01-27 06:24:34.882 [main] INFO  com.solvd.agency.Main - Objects with different content
+2023-01-27 06:24:34.882 [main] INFO  com.solvd.agency.Main - Objects with different hash code
+2023-01-27 06:24:34.884 [main] WARN  com.solvd.agency.Main - The ID of apartment does not exists
+2023-01-27 06:24:34.884 [main] INFO  com.solvd.agency.utils.CustomLinkedList - List is empty
+2023-01-27 06:24:34.884 [main] INFO  com.solvd.agency.business.Agency - 
+2023-01-27 06:24:34.885 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=3, city='Los Angeles', email='pablo@mail.com', person=Person{firstName='Jonas', lastName='Johnson', phoneNumber=123456}}
+2023-01-27 06:24:34.885 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=2, city='Missouri', email='pablo@mail.com', person=Person{firstName='Martin', lastName='Scorsese', phoneNumber=123456}}
+2023-01-27 06:24:34.885 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=1, city='Chicago', email='pablo@mail.com', person=Person{firstName='Paul', lastName='Newman', phoneNumber=123456}}
+2023-01-27 06:24:34.885 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=1, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Drew', lastName='Barrymore', phoneNumber=123456}}
+2023-01-27 06:24:34.885 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=2, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Kevin', lastName='Hart', phoneNumber=123456}}
+2023-01-27 06:24:34.886 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=3, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Dwayne', lastName='Johnson', phoneNumber=123456}}
+2023-01-27 06:24:34.886 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=1, person=Person{firstName='Paul', lastName='Walker', phoneNumber=null}}
+2023-01-27 06:24:34.886 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=2, person=Person{firstName='Meryl', lastName='Streep', phoneNumber=2345678}}
+2023-01-27 06:24:34.886 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}}
+2023-01-27 06:24:34.889 [main] INFO  com.solvd.agency.Main - com.solvd.agency.business.Agency:DEBUG in 77556fd
+2023-01-27 06:24:34.890 [main] INFO  com.solvd.agency.Main - com.solvd.agency.business.Agency:DEBUG in 77556fd
+2023-01-27 06:24:34.890 [main] INFO  com.solvd.agency.Main - com.solvd.agency.business.Agency:DEBUG in 77556fd
+2023-01-27 06:24:34.890 [main] INFO  com.solvd.agency.Main - com.solvd.agency.business.Agency:DEBUG in 77556fd
+2023-01-27 06:24:34.890 [main] INFO  com.solvd.agency.Main - com.solvd.agency.business.Agency:DEBUG in 77556fd
+2023-01-27 06:24:34.890 [main] INFO  com.solvd.agency.Main - com.solvd.agency.business.Agency:DEBUG in 77556fd
+2023-01-27 06:24:34.891 [main] INFO  com.solvd.agency.Main - com.solvd.agency.business.Agency:DEBUG in 77556fd
+2023-01-27 06:24:34.891 [main] INFO  com.solvd.agency.Main - com.solvd.agency.business.Agency:DEBUG in 77556fd
+2023-01-27 06:24:34.891 [main] INFO  com.solvd.agency.Main - com.solvd.agency.business.Agency:DEBUG in 77556fd
+2023-01-27 06:24:34.891 [main] INFO  com.solvd.agency.Main - com.solvd.agency.business.Agency:DEBUG in 77556fd
+2023-01-27 06:26:06.884 [main] WARN  com.solvd.agency.persons.Person - The field must contain only numbers
+2023-01-27 06:26:06.889 [main] WARN  com.solvd.agency.persons.Person - The field/s can not be null/s
+2023-01-27 06:26:06.908 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=1, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Drew', lastName='Barrymore', phoneNumber=123456}}
+2023-01-27 06:26:06.908 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=2, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Kevin', lastName='Hart', phoneNumber=123456}}
+2023-01-27 06:26:06.909 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=3, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Dwayne', lastName='Johnson', phoneNumber=123456}}
+2023-01-27 06:26:06.909 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=3, city='Los Angeles', email='pablo@mail.com', person=Person{firstName='Jonas', lastName='Johnson', phoneNumber=123456}}
+2023-01-27 06:26:06.910 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=2, city='Missouri', email='pablo@mail.com', person=Person{firstName='Martin', lastName='Scorsese', phoneNumber=123456}}
+2023-01-27 06:26:06.910 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=1, city='Chicago', email='pablo@mail.com', person=Person{firstName='Paul', lastName='Newman', phoneNumber=123456}}
+2023-01-27 06:26:06.910 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=1, person=Person{firstName='Paul', lastName='Walker', phoneNumber=null}}
+2023-01-27 06:26:06.910 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=2, person=Person{firstName='Meryl', lastName='Streep', phoneNumber=2345678}}
+2023-01-27 06:26:06.911 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}}
+2023-01-27 06:26:06.911 [main] INFO  com.solvd.agency.Main - Not same memory space reference
+2023-01-27 06:26:06.911 [main] INFO  com.solvd.agency.Main - Objects with different content
+2023-01-27 06:26:06.911 [main] INFO  com.solvd.agency.Main - Objects with different hash code
+2023-01-27 06:26:06.914 [main] WARN  com.solvd.agency.Main - The ID of apartment does not exists
+2023-01-27 06:26:06.914 [main] INFO  com.solvd.agency.utils.CustomLinkedList - List is empty
+2023-01-27 06:26:06.914 [main] INFO  com.solvd.agency.business.Agency - 
+2023-01-27 06:26:06.915 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=3, city='Los Angeles', email='pablo@mail.com', person=Person{firstName='Jonas', lastName='Johnson', phoneNumber=123456}}
+2023-01-27 06:26:06.915 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=2, city='Missouri', email='pablo@mail.com', person=Person{firstName='Martin', lastName='Scorsese', phoneNumber=123456}}
+2023-01-27 06:26:06.915 [main] INFO  com.solvd.agency.business.Agency - Customer{idClient=1, city='Chicago', email='pablo@mail.com', person=Person{firstName='Paul', lastName='Newman', phoneNumber=123456}}
+2023-01-27 06:26:06.915 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=1, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Drew', lastName='Barrymore', phoneNumber=123456}}
+2023-01-27 06:26:06.915 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=2, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Kevin', lastName='Hart', phoneNumber=123456}}
+2023-01-27 06:26:06.916 [main] INFO  com.solvd.agency.business.Agency - Agent{idAgent=3, percentageSaleCommission=10.0, percentageRentCommission=5.0, saleCommission=0.0, rentCommission=0.0, rent contracts=0, sale contracts=0, person=Person{firstName='Dwayne', lastName='Johnson', phoneNumber=123456}}
+2023-01-27 06:26:06.916 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=1, person=Person{firstName='Paul', lastName='Walker', phoneNumber=null}}
+2023-01-27 06:26:06.916 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=2, person=Person{firstName='Meryl', lastName='Streep', phoneNumber=2345678}}
+2023-01-27 06:26:06.916 [main] INFO  com.solvd.agency.business.Agency - Owner{idOwner=3, person=Person{firstName='Jason', lastName='Momoa', phoneNumber=3456789}}
+2023-01-27 06:26:06.919 [main] INFO  com.solvd.agency.Main - Apartment{idApartment=1, location='FLORIDA', price=5000.0, numberRooms=5, available=true, for rent or for buy=FOR_BUY, owner=Paul Walker, owner contact=null}
+2023-01-27 06:26:06.920 [main] INFO  com.solvd.agency.Main - Apartment{idApartment=2, location='BARCELONA', price=4000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=Paul Walker, owner contact=null}
+2023-01-27 06:26:06.920 [main] INFO  com.solvd.agency.Main - Apartment{idApartment=3, location='FLORIDA', price=3500.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=Paul Walker, owner contact=null}
+2023-01-27 06:26:06.920 [main] INFO  com.solvd.agency.Main - Apartment{idApartment=4, location='WASHINGTON', price=1500.0, numberRooms=1, available=true, for rent or for buy=FOR_BUY, owner=Meryl Streep, owner contact=2345678}
+2023-01-27 06:26:06.921 [main] INFO  com.solvd.agency.Main - Apartment{idApartment=5, location='PARIS', price=2000.0, numberRooms=3, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678}
+2023-01-27 06:26:06.921 [main] INFO  com.solvd.agency.Main - Apartment{idApartment=6, location='NEW_JORK', price=6000.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Meryl Streep, owner contact=2345678}
+2023-01-27 06:26:06.921 [main] INFO  com.solvd.agency.Main - Apartment{idApartment=7, location='ROME', price=3500.0, numberRooms=2, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789}
+2023-01-27 06:26:06.921 [main] INFO  com.solvd.agency.Main - Apartment{idApartment=8, location='BARCELONA', price=5500.0, numberRooms=4, available=true, for rent or for buy=FOR_RENT, owner=Jason Momoa, owner contact=3456789}
+2023-01-27 06:26:06.921 [main] INFO  com.solvd.agency.Main - Apartment{idApartment=9, location='NEW_JORK', price=7000.0, numberRooms=3, available=true, for rent or for buy=FOR_BUY, owner=Jason Momoa, owner contact=3456789}
